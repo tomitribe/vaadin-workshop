@@ -35,5 +35,6 @@ wadl.zip
 # Vaadin generated stuff, could be excluded through maven hack too
 widgetsets
 gwt-unitCache
+*.css
 
 wadlcache/
