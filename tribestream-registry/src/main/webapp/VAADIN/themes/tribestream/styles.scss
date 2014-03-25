@@ -1,0 +1,11 @@
+@import "addons.scss";
+@import "tribestream.scss";
+
+/* This file prefixes all rules with the theme name to avoid causing conflicts with other themes. */
+/* The actual styles should be defined in mytheme.scss */
+.tribestream {
+  @include addons;
+
+  // Include tribestream theme styles in your theme
+  @include tribestream;
+}
