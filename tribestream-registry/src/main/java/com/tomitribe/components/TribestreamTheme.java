@@ -2,17 +2,21 @@ package com.tomitribe.components;
 
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.themes.ChameleonTheme;
 import com.vaadin.ui.themes.Reindeer;
 
 public class TribestreamTheme {
     public static final String THEME_NAME = "tribestream";
 
-    public static final String H1 = Reindeer.LABEL_H1;
-    public static final String SEARCH = "search";
+    public static final String H1 = ChameleonTheme.LABEL_H1;
+    public static final String SEARCH = ChameleonTheme.TEXTFIELD_SEARCH;
 
     public static final String OPTIONS = "t-options";
-    public static final String REPOSITORY_GRID = "t-repository-grid";
+
     public static final String HEADER = "t-header";
+    public static final String SUB_HEADER = "t-sub-header";
+
+    public static final String REPOSITORY_GRID = "t-repository-grid";
     public static final String REPOSITORY_BOX = "t-repository-box";
     public static final String REPOSITORY_ICON = "t-repository-icon";
     public static final String REPOSITORY_HEADER = "t-repository-header";

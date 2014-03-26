@@ -16,6 +16,8 @@ $t-white: rgb(255, 255, 255);
 $t-grey: rgb(147, 149, 152);
 $t-blue: rgb(97, 197, 191);
 
+$t-margin: 12px;
+
 @mixin tribestream {
   @include chameleon;
 
@@ -34,7 +36,7 @@ $t-blue: rgb(97, 197, 191);
   }
 
   .t-repository-box {
-    margin: 12px;
+    margin: $t-margin;
     background-color: $t-orange;
 
     &,
@@ -42,6 +44,10 @@ $t-blue: rgb(97, 197, 191);
       color: $t-white;
       cursor: pointer;
     }
+  }
+
+  .t-sub-header {
+    padding: 0 $t-margin;
   }
 
   input[type="button"],

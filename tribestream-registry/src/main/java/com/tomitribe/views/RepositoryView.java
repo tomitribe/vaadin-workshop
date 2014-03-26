@@ -28,6 +28,12 @@ public class RepositoryView extends TVerticalLayout implements View {
                 setExpandRatio(search, 1);
             }
         });
+        addComponent(new TLabel(repo.getDescription()) {
+            {
+                addStyleName(TribestreamTheme.SUB_HEADER);
+                setWidth(TribestreamTheme.Sizes.FULL);
+            }
+        });
         addComponent(new CssLayout() {
             {
             }
