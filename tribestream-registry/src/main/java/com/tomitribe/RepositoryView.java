@@ -1,16 +1,12 @@
 package com.tomitribe;
 
-import com.porotype.iconfont.FontAwesome;
-import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.TextField;
 
-import java.util.Random;
-
-public class HomeView extends TVerticalLayout implements View {
-    public HomeView(final Navigator navigator, final Repository[] repos) {
+public class RepositoryView extends TVerticalLayout implements View {
+    public RepositoryView(final Repository repo) {
         addComponent(new THorizontalLayout() {
             {
                 addStyleName(TribestreamTheme.HEADER);
@@ -18,18 +14,13 @@ public class HomeView extends TVerticalLayout implements View {
 
                 TextField search;
 
-                addComponent(new TLabel("Repositories") {
+                addComponent(new TLabel(repo.getTitle()) {
                     {
                         addStyleName(TribestreamTheme.H1);
                     }
                 });
-                addComponent(new TButton(FontAwesome.Icon.cog) {
-                    {
-                        addStyleName(TribestreamTheme.OPTIONS);
-                    }
-                });
                 addComponent(new TSpacer());
-                addComponent(search = new TSearchField("Search repositories…"));
+                addComponent(search = new TSearchField("Search " + repo.getTitle() + "…"));
 
                 search.setWidth(TribestreamTheme.Sizes.FULL);
                 setExpandRatio(search, 1);
@@ -37,10 +28,6 @@ public class HomeView extends TVerticalLayout implements View {
         });
         addComponent(new CssLayout() {
             {
-                addStyleName(TribestreamTheme.REPOSITORY_GRID);
-                for (Repository repo : repos) {
-                    addComponent(new TRepositoryBox(navigator, repo));
-                }
             }
         });
     }

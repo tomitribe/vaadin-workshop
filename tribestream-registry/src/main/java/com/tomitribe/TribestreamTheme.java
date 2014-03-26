@@ -1,6 +1,7 @@
 package com.tomitribe;
 
 import com.vaadin.server.ThemeResource;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.themes.Reindeer;
 
 public class TribestreamTheme {
