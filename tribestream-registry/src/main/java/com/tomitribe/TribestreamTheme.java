@@ -1,14 +1,15 @@
 package com.tomitribe;
 
+import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.themes.Reindeer;
 
 public class TribestreamTheme {
     public static final String THEME_NAME = "tribestream";
 
     public static final String H1 = Reindeer.LABEL_H1;
+    public static final String SEARCH = "search";
 
     public static final String OPTIONS = "t-options";
-    public static final String SEARCH = "t-search";
     public static final String REPOSITORY_GRID = "t-repository-grid";
     public static final String HEADER = "t-header";
     public static final String REPOSITORY_BOX = "t-repository-box";
@@ -18,7 +19,12 @@ public class TribestreamTheme {
     public static final String REPOSITORY_DESCRIPTION = "t-repository-description";
     public static final String REPOSITORY_SIZE = "t-repository-size";
 
-    public static class Size {
+    public static class Icons {
+        public static final ThemeResource TOMITRIBE_MARK = new ThemeResource("tomitribe-mark_50x46.png");
+    }
+
+    public static class Sizes {
         public static final String UNDEFINED = null;
+        public static final String FULL = "100%";
     }
 }

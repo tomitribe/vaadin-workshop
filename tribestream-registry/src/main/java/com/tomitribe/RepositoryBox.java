@@ -2,22 +2,19 @@ package com.tomitribe;
 
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.Image;
-import com.vaadin.ui.Label;
 
 public class RepositoryBox extends TVerticalLayout {
     public RepositoryBox(final Repository repo) {
         addStyleName(TribestreamTheme.REPOSITORY_BOX);
-        setWidth(TribestreamTheme.Size.UNDEFINED);
+        setWidth(TribestreamTheme.Sizes.UNDEFINED);
 
-        addComponent(new CssLayout() {
+        CssLayout header;
+
+        addComponent(header = new CssLayout() {
             {
                 addStyleName(TribestreamTheme.REPOSITORY_HEADER);
+                setWidth(TribestreamTheme.Sizes.FULL);
 
-                addComponent(new Image(null, repo.getIcon()) {
-                    {
-                        addStyleName(TribestreamTheme.REPOSITORY_ICON);
-                    }
-                });
                 addComponent(new TLabel(repo.getTitle()) {
                     {
                         addStyleName(TribestreamTheme.REPOSITORY_TITLE);
