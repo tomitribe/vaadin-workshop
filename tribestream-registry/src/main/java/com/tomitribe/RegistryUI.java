@@ -1,6 +1,9 @@
 package com.tomitribe;
 
 import com.porotype.iconfont.FontAwesome;
+import com.tomitribe.components.TribestreamTheme;
+import com.tomitribe.views.HomeView;
+import com.tomitribe.views.RepositoryView;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.navigator.Navigator;

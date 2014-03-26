@@ -1,9 +1,10 @@
-package com.tomitribe;
+package com.tomitribe.components;
 
+import com.tomitribe.Repository;
+import com.tomitribe.views.RepositoryView;
 import com.vaadin.event.LayoutEvents;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.ui.CssLayout;
-import com.vaadin.ui.Image;
 
 public class TRepositoryBox extends TVerticalLayout {
     public TRepositoryBox(final Navigator navigator, final Repository repo) {

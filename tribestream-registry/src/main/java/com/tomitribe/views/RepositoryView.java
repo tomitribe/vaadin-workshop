@@ -1,5 +1,7 @@
-package com.tomitribe;
+package com.tomitribe.views;
 
+import com.tomitribe.*;
+import com.tomitribe.components.*;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.CssLayout;

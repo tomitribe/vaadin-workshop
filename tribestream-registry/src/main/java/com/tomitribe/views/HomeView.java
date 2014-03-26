@@ -1,13 +1,13 @@
-package com.tomitribe;
+package com.tomitribe.views;
 
 import com.porotype.iconfont.FontAwesome;
+import com.tomitribe.*;
+import com.tomitribe.components.*;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.TextField;
-
-import java.util.Random;
 
 public class HomeView extends TVerticalLayout implements View {
     public HomeView(final Navigator navigator, final Repository[] repos) {

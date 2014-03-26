@@ -1,6 +1,4 @@
-package com.tomitribe;
-
-import com.vaadin.ui.Component;
+package com.tomitribe.components;
 
 public class TSpacer extends TLabel {
     public TSpacer() {

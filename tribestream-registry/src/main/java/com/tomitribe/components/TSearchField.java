@@ -1,4 +1,4 @@
-package com.tomitribe;
+package com.tomitribe.components;
 
 import com.vaadin.ui.TextField;
 
