@@ -27,7 +27,8 @@ $t-margin: 12px;
     @extend .v-button-link;
     @extend .v-nativebutton-link;
 
-    &:after {
+    &::after {
+      @extend .v-label;
       content: " →";
       display: inline;
     }
