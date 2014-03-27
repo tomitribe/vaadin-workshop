@@ -8,7 +8,7 @@ public class TBreadcrumbTrail extends THorizontalLayout {
         if (navigator.getState().isEmpty()) {
             addComponent(new TLabel("Home"));
         } else {
-            addComponent(new TBreadcrumb(navigator, "", "Home"));
+            addComponent(new TBreadcrumb("Home", navigator.getUI().getPage().getLocation().getPath()));
             addComponent(new TLabel(navigator.getState()));
         }
     }
