@@ -31,6 +31,14 @@ public class ServiceDto extends AbstractEnrichDto {
         return method;
     }
 
+    public String getPath() {
+        final StringBuilder path = new StringBuilder();
+        for (Resource resource : stackOfResource) {
+            path.append(resource.getPath());
+        }
+        return path.toString();
+    }
+
     @Override
     public String toString() {
         final ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
@@ -53,12 +61,12 @@ public class ServiceDto extends AbstractEnrichDto {
         return builder.toString();
     }
 
-    public GroupDto getGroup() {
-        return group;
-    }
-
     public void setGroup(final GroupDto group) {
         this.group = group;
+    }
+
+    public GroupDto getGroup() {
+        return group;
     }
 
     @Override

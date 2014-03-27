@@ -21,12 +21,10 @@ public class Resource {
     }
 
     public String getPath() {
-        //FIXME
-        return dto.getMethod().getHref();
+        return dto.getPath();
     }
 
     public String getSummary() {
-        //FIXME
-        return dto.getMethod().getDoc().toString();
+        return dto.getStringDoc(dto.getMethod());
     }
 }
