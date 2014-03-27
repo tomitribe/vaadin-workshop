@@ -2,13 +2,24 @@ package com.tomitribe.views;
 
 import com.tomitribe.*;
 import com.tomitribe.components.*;
+import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.TextField;
 
 public class RepositoryView extends TVerticalLayout implements View {
-    public RepositoryView(final Repository repo) {
+    private Navigator navigator;
+    private Repository repo;
+
+    public RepositoryView(final Repository repo, Navigator navigator) {
+        this.repo = repo;
+        this.navigator = navigator;
+    }
+
+    @Override
+    public void enter(ViewChangeListener.ViewChangeEvent event) {
+        addComponent(new TBreadcrumbTrail(navigator));
         addComponent(new THorizontalLayout() {
             {
                 addStyleName(TribestreamTheme.HEADER);
@@ -39,7 +50,4 @@ public class RepositoryView extends TVerticalLayout implements View {
             }
         });
     }
-
-    @Override
-    public void enter(ViewChangeListener.ViewChangeEvent event) {}
 }

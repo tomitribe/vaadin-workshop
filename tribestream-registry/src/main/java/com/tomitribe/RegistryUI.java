@@ -42,7 +42,7 @@ public class RegistryUI extends UI {
     @Override
     protected void init(VaadinRequest request) {
         FontAwesome.load();
-        Navigator navigator = new Navigator(this, this);
+        final Navigator navigator = new Navigator(this, this);
         navigator.addView("", new HomeView(navigator, repos));
         navigator.addProvider(new ViewProvider() {
             @Override
@@ -53,7 +53,7 @@ public class RegistryUI extends UI {
             @Override
             public View getView(String viewName) {
                 return new RepositoryView(repoMap.get(
-                         viewName.contains("/") ? viewName.substring(0, viewName.indexOf('/')) : viewName));
+                         viewName.contains("/") ? viewName.substring(0, viewName.indexOf('/')) : viewName), navigator);
             }
         });
     }

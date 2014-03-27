@@ -1,0 +1,17 @@
+package com.tomitribe.components;
+
+import com.vaadin.navigator.Navigator;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.Link;
+
+public class TBreadcrumbTrail extends THorizontalLayout {
+    public TBreadcrumbTrail(Navigator navigator) {
+        addStyleName(TribestreamTheme.BREADCRUMB_TRAIL);
+        if (navigator.getState().isEmpty()) {
+            addComponent(new TLabel("Home"));
+        } else {
+            addComponent(new TBreadcrumb(navigator, "", "Home"));
+            addComponent(new TLabel(navigator.getState()));
+        }
+    }
+}

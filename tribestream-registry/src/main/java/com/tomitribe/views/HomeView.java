@@ -10,7 +10,13 @@ import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.TextField;
 
 public class HomeView extends TVerticalLayout implements View {
+    private final Navigator navigator;
+    private final Repository[] repos;
+
     public HomeView(final Navigator navigator, final Repository[] repos) {
+        this.navigator = navigator;
+        this.repos = repos;
+        addComponent(new TBreadcrumbTrail(navigator));
         addComponent(new THorizontalLayout() {
             {
                 addStyleName(TribestreamTheme.HEADER);
