@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import "../chameleon/chameleon.scss";
 
 $font-size: 13px;
@@ -20,6 +21,28 @@ $t-margin: 12px;
 
 @mixin tribestream {
   @include chameleon;
+
+  .t-breadcrumb {
+    @extend .link;
+    @extend .v-button-link;
+    @extend .v-nativebutton-link;
+
+    &:after {
+      content: " →";
+      display: inline;
+    }
+  }
+
+  .t-breadcrumb-trail {
+
+    &.v-margin-top {
+      padding-top: 0;
+    }
+
+    &.v-margin-bottom {
+      padding-bottom: 0;
+    }
+  }
 
   h1,
   .h1,
