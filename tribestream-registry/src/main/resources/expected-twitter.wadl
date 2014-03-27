@@ -1245,6 +1245,7 @@
 </xs:schema>
     </grammars>
     <resources base="https://api.twitter.com/1.1/">
+        <doc>Lorem ipsum</doc>
         <resource path="/oauth2">
             <resource path="/invalidate_token">
                 <method name="POST">

@@ -40,7 +40,9 @@ public class RegistryUI extends UI {
         initData();
 
         final Navigator navigator = new Navigator(this, this);
-        navigator.addView("", new HomeView(navigator, repoList));
+        final HomeView homeView = new HomeView(navigator, repoList);
+
+        navigator.addView("", homeView);
         navigator.addProvider(new ViewProvider() {
             @Override
             public String getViewName(String viewAndParameters) {
@@ -49,8 +51,9 @@ public class RegistryUI extends UI {
 
             @Override
             public View getView(String viewName) {
-                return new RepositoryView(repoMap.get(
-                        viewName.contains("/") ? viewName.substring(0, viewName.indexOf('/')) : viewName), navigator);
+                RepositoryDto repo = repoMap.get(
+                        viewName.contains("/") ? viewName.substring(0, viewName.indexOf('/')) : viewName);
+                return repo == null ? null : new RepositoryView(repo, navigator);
             }
         });
     }

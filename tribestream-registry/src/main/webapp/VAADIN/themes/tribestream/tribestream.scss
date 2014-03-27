@@ -83,6 +83,11 @@ $t-margin: 12px;
     padding: 0 $t-margin;
   }
 
+  .v-table {
+    @extend .striped;
+    @extend .v-table-striped;
+  }
+
   input[type="button"],
   input[type="submit"],
   input[type="reset"],

@@ -30,19 +30,19 @@ public class HomeView extends TVerticalLayout implements View {
         addComponent(new TBreadcrumbTrail(navigator));
         addComponent(new THorizontalLayout() {
             {
-                addStyleName(TribestreamTheme.HEADER);
+                addStyleName(TribestreamTheme.StyleNames.HEADER);
                 setWidth(TribestreamTheme.Sizes.FULL);
 
                 TextField search;
 
                 addComponent(new TLabel("Repositories") {
                     {
-                        addStyleName(TribestreamTheme.H1);
+                        addStyleName(TribestreamTheme.StyleNames.H1);
                     }
                 });
                 addComponent(new TButton(FontAwesome.Icon.cog) {
                     {
-                        addStyleName(TribestreamTheme.OPTIONS);
+                        addStyleName(TribestreamTheme.StyleNames.OPTIONS);
                     }
                 });
                 addComponent(new TSpacer());
@@ -54,7 +54,7 @@ public class HomeView extends TVerticalLayout implements View {
         });
         addComponent(new CssLayout() {
             {
-                addStyleName(TribestreamTheme.REPOSITORY_GRID);
+                addStyleName(TribestreamTheme.StyleNames.REPOSITORY_GRID);
                 for (RepositoryDto repo : repos) {
                     addComponent(new TRepositoryBox(navigator, repo));
                 }

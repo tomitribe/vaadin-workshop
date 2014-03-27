@@ -5,7 +5,7 @@ import com.vaadin.navigator.Navigator;
 
 public class TBreadcrumbTrail extends THorizontalLayout {
     public TBreadcrumbTrail(Navigator navigator) {
-        addStyleName(TribestreamTheme.Icons.BREADCRUMB_TRAIL);
+        addStyleName(TribestreamTheme.StyleNames.BREADCRUMB_TRAIL);
         if (navigator.getState().isEmpty()) {
             addComponent(new TLabel("Home"));
         } else {

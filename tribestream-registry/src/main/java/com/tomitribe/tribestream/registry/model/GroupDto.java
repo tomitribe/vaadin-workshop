@@ -13,6 +13,7 @@ public class GroupDto extends AbstractDto {
     private final Application application;
     private final Resources resources;
     private String name;
+    private String description;
     private List<ServiceDto> serviceDtos;
 
     public GroupDto() {
@@ -42,6 +43,14 @@ public class GroupDto extends AbstractDto {
 
     public String getName() {
         return name;
+    }
+
+    public String getDescription() {
+        if (description == null || description.trim().length() == 0) {
+            // try do read doc tags
+            description = getStringDoc(resources.getDoc());
+        }
+        return description;
     }
 
     @Override

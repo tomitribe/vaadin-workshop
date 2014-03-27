@@ -9,7 +9,7 @@ import com.vaadin.ui.CssLayout;
 
 public class TRepositoryBox extends TVerticalLayout {
     public TRepositoryBox(final Navigator navigator, final RepositoryDto repo) {
-        addStyleName(TribestreamTheme.REPOSITORY_BOX);
+        addStyleName(TribestreamTheme.StyleNames.REPOSITORY_BOX);
         setWidth("200px");
         setHeight("200px");
 
@@ -17,24 +17,24 @@ public class TRepositoryBox extends TVerticalLayout {
 
         addComponent(new CssLayout() {
             {
-                addStyleName(TribestreamTheme.REPOSITORY_HEADER);
+                addStyleName(TribestreamTheme.StyleNames.REPOSITORY_HEADER);
                 setWidth(TribestreamTheme.Sizes.FULL);
 
                 addComponent(new TLabel(repo.getName()) {
                     {
-                        addStyleName(TribestreamTheme.REPOSITORY_TITLE);
+                        addStyleName(TribestreamTheme.StyleNames.REPOSITORY_TITLE);
                     }
                 });
             }
         });
         addComponent(description = new TLabel(repo.getDescription()) {
             {
-                addStyleName(TribestreamTheme.REPOSITORY_DESCRIPTION);
+                addStyleName(TribestreamTheme.StyleNames.REPOSITORY_DESCRIPTION);
             }
         });
         addComponent(new TLabel(repo.numberOfResources() + " resources") {
             {
-                addStyleName(TribestreamTheme.REPOSITORY_SIZE);
+                addStyleName(TribestreamTheme.StyleNames.REPOSITORY_SIZE);
             }
         });
 
