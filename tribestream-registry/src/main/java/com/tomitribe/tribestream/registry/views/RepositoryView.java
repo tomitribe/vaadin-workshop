@@ -4,14 +4,11 @@ import com.tomitribe.tribestream.registry.components.*;
 import com.tomitribe.tribestream.registry.model.GroupDto;
 import com.tomitribe.tribestream.registry.model.RepositoryDto;
 import com.tomitribe.tribestream.registry.model.ServiceDto;
-import com.tomitribe.wadl.api.Resource;
-import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
-import com.vaadin.ui.VerticalLayout;
 import org.vaadin.jouni.animator.Disclosure;
 
 import java.util.List;
@@ -70,7 +67,9 @@ public class RepositoryView extends TVerticalLayout implements View {
 
                                     final GroupDto group = entry.getValue();
 
-                                    addComponent(new TLabel(group.getDescription()));
+                                    //FIXME
+                                    addComponent(new TLabel("Group description goes here"));
+
                                     addComponent(new Table() {
                                         {
                                             List<ServiceDto> resources = group.getServiceDtos();
@@ -78,8 +77,9 @@ public class RepositoryView extends TVerticalLayout implements View {
                                             setWidth(Sizes.FULL);
                                             setHeight(Sizes.tableHeight(resources.size()));
 
-                                            setContainerDataSource(new ResourceContainer(resources));
-                                            setVisibleColumns("secure", "verb", "path", "summary");
+                                            setContainerDataSource(new ResourceContainer(navigator, resources));
+                                            setVisibleColumns(Resource.PROPERTIES);
+                                            setColumnExpandRatio(Resource.SUMMARY, 1);
                                         }
                                     });
                                 }
