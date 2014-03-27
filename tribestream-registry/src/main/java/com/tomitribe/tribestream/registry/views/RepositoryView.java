@@ -9,6 +9,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.Link;
+import com.vaadin.ui.Panel;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
 import org.vaadin.jouni.animator.Disclosure;
@@ -30,6 +31,8 @@ public class RepositoryView extends TVerticalLayout implements View {
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
+        Panel content;
+
         addComponent(new TBreadcrumbTrail(navigator));
         addComponent(new THorizontalLayout() {
             {
@@ -56,7 +59,7 @@ public class RepositoryView extends TVerticalLayout implements View {
                 setWidth(Sizes.FULL);
             }
         });
-        addComponent(new TVerticalLayout() {
+        addComponent(content = new Panel(new TVerticalLayout() {
             {
                 for (final Map.Entry<String, GroupDto> entry : repo.getGroups().entrySet()) {
                     addComponent(new Disclosure(entry.getKey()) {
@@ -101,7 +104,12 @@ public class RepositoryView extends TVerticalLayout implements View {
                     });
                 }
             }
-        });
+        }));
+
+        content.setSizeFull();
+        setExpandRatio(content, 1);
+
+        setSizeFull();
     }
 
 }

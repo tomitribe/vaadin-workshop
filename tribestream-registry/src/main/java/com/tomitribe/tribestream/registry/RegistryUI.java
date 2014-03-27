@@ -34,6 +34,10 @@ public class RegistryUI extends UI {
     private List<RepositoryDto> repoList;
     private Map<String, RepositoryDto> repoMap;
 
+    public RegistryUI() {
+        initData();
+    }
+
     public static String camelCase(final String string, final String delimiter) {
         final StringBuilder sb = new StringBuilder();
         final String[] strings = string.split(delimiter);
@@ -49,8 +53,6 @@ public class RegistryUI extends UI {
     @Override
     protected void init(VaadinRequest request) {
         FontAwesome.load();
-
-        initData();
 
         final Navigator navigator = new Navigator(this, this);
         final HomeView homeView = new HomeView(navigator, repoList);

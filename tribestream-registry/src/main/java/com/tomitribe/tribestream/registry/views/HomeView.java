@@ -15,6 +15,7 @@ import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.CssLayout;
+import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextField;
 
 import java.util.List;
@@ -26,6 +27,8 @@ public class HomeView extends TVerticalLayout implements View {
     public HomeView(final Navigator navigator, final List<RepositoryDto> repos) {
         this.navigator = navigator;
         this.repos = repos;
+
+        Panel content;
 
         addComponent(new TBreadcrumbTrail(navigator));
         addComponent(new THorizontalLayout() {
@@ -52,14 +55,19 @@ public class HomeView extends TVerticalLayout implements View {
                 setExpandRatio(search, 1);
             }
         });
-        addComponent(new CssLayout() {
+        addComponent(content = new Panel(new CssLayout() {
             {
                 addStyleName(TribestreamTheme.StyleNames.REPOSITORY_GRID);
                 for (RepositoryDto repo : repos) {
                     addComponent(new TRepositoryBox(navigator, repo));
                 }
             }
-        });
+        }));
+
+        content.setSizeFull();
+        setExpandRatio(content, 1);
+
+        setSizeFull();
     }
 
     @Override
