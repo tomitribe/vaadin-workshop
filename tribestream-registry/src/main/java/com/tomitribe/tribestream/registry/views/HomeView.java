@@ -1,6 +1,7 @@
 package com.tomitribe.tribestream.registry.views;
 
 import com.porotype.iconfont.FontAwesome;
+import com.tomitribe.tribestream.registry.components.TBreadcrumbTrail;
 import com.tomitribe.tribestream.registry.components.TButton;
 import com.tomitribe.tribestream.registry.components.THorizontalLayout;
 import com.tomitribe.tribestream.registry.components.TLabel;
@@ -19,12 +20,13 @@ import com.vaadin.ui.TextField;
 import java.util.List;
 
 public class HomeView extends TVerticalLayout implements View {
-    public HomeView(final Navigator navigator, final List<RepositoryDto> repos) {
     private final Navigator navigator;
-    private final Repository[] repos;
+    private final List<RepositoryDto> repos;
 
+    public HomeView(final Navigator navigator, final List<RepositoryDto> repos) {
         this.navigator = navigator;
         this.repos = repos;
+
         addComponent(new TBreadcrumbTrail(navigator));
         addComponent(new THorizontalLayout() {
             {

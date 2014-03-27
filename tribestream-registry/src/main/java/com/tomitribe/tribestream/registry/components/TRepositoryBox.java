@@ -38,7 +38,6 @@ public class TRepositoryBox extends TVerticalLayout {
             @Override
             public void layoutClick(LayoutEvents.LayoutClickEvent event) {
                 String title = repo.getName();
-                navigator.addView(title, new RepositoryView(repo));
                 navigator.addView(title, new RepositoryView(repo, navigator));
                 navigator.navigateTo(title);
             }

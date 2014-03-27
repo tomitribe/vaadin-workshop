@@ -24,8 +24,8 @@ public class TribestreamTheme {
 
     public static class Icons {
         public static final ThemeResource TOMITRIBE_MARK = new ThemeResource("tomitribe-mark_50x46.png");
-    public static final String BREADCRUMB_TRAIL = "t-breadcrumb-trail";
-    public static final String BREADCRUMB = "t-breadcrumb";
+        public static final String BREADCRUMB_TRAIL = "t-breadcrumb-trail";
+        public static final String BREADCRUMB = "t-breadcrumb";
     }
 
     public static class Sizes {

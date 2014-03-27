@@ -6,7 +6,7 @@ import com.vaadin.ui.NativeButton;
 public class TBreadcrumb extends NativeButton {
     public TBreadcrumb(final Navigator navigator, final String view, String caption) {
         super(caption);
-        addStyleName(TribestreamTheme.BREADCRUMB);
+        addStyleName(TribestreamTheme.Icons.BREADCRUMB);
 
         addClickListener(new ClickListener() {
             @Override

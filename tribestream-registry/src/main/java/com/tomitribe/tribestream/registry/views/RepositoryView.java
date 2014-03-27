@@ -1,5 +1,6 @@
 package com.tomitribe.tribestream.registry.views;
 
+import com.tomitribe.tribestream.registry.components.TBreadcrumbTrail;
 import com.tomitribe.tribestream.registry.components.THorizontalLayout;
 import com.tomitribe.tribestream.registry.components.TLabel;
 import com.tomitribe.tribestream.registry.components.TSearchField;
@@ -7,17 +8,18 @@ import com.tomitribe.tribestream.registry.components.TSpacer;
 import com.tomitribe.tribestream.registry.components.TVerticalLayout;
 import com.tomitribe.tribestream.registry.components.TribestreamTheme;
 import com.tomitribe.tribestream.registry.model.RepositoryDto;
+import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.TextField;
 
 public class RepositoryView extends TVerticalLayout implements View {
-    public RepositoryView(final RepositoryDto repo) {
     private Navigator navigator;
-    private Repository repo;
+    private RepositoryDto repo;
 
-    public RepositoryView(final Repository repo, Navigator navigator) {
+    public RepositoryView(final RepositoryDto repo, Navigator navigator) {
+        this.repo = repo;
         this.navigator = navigator;
     }
 
@@ -38,7 +40,6 @@ public class RepositoryView extends TVerticalLayout implements View {
                 });
                 addComponent(new TSpacer());
                 addComponent(search = new TSearchField("Search " + repo.getName() + "…"));
-
                 search.setWidth(TribestreamTheme.Sizes.FULL);
                 setExpandRatio(search, 1);
             }
@@ -55,7 +56,4 @@ public class RepositoryView extends TVerticalLayout implements View {
         });
     }
 
-    @Override
-    public void enter(ViewChangeListener.ViewChangeEvent event) {
-    }
 }
