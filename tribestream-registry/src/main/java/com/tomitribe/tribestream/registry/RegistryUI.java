@@ -100,8 +100,8 @@ public class RegistryUI extends UI {
     }
 
     @WebServlet(value = "/*", asyncSupported = true)
-    @VaadinServletConfiguration(productionMode = false, ui = RegistryUI.class, widgetset = "com.tomitribe.tribestream" +
-            ".registry.AppWidgetSet")
+    @VaadinServletConfiguration(productionMode = false, ui = RegistryUI.class,
+            widgetset = "com.tomitribe.tribestream.registry.AppWidgetSet")
     public static class Servlet extends VaadinServlet {
     }
 }

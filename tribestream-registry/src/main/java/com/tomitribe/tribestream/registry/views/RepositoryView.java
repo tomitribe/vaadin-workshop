@@ -7,12 +7,16 @@ import com.tomitribe.tribestream.registry.components.TSearchField;
 import com.tomitribe.tribestream.registry.components.TSpacer;
 import com.tomitribe.tribestream.registry.components.TVerticalLayout;
 import com.tomitribe.tribestream.registry.TribestreamTheme;
+import com.tomitribe.tribestream.registry.model.GroupDto;
 import com.tomitribe.tribestream.registry.model.RepositoryDto;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.VerticalLayout;
+
+import java.util.Map;
 
 public class RepositoryView extends TVerticalLayout implements View {
     private Navigator navigator;
@@ -40,6 +44,7 @@ public class RepositoryView extends TVerticalLayout implements View {
                 });
                 addComponent(new TSpacer());
                 addComponent(search = new TSearchField("Search " + repo.getName() + "…"));
+
                 search.setWidth(TribestreamTheme.Sizes.FULL);
                 setExpandRatio(search, 1);
             }
@@ -50,8 +55,11 @@ public class RepositoryView extends TVerticalLayout implements View {
                 setWidth(TribestreamTheme.Sizes.FULL);
             }
         });
-        addComponent(new CssLayout() {
+        addComponent(new TVerticalLayout() {
             {
+                for (Map.Entry<String, GroupDto> entry : repo.getGroups().entrySet()) {
+                    addComponent(new TLabel(entry.getKey()));
+                }
             }
         });
     }

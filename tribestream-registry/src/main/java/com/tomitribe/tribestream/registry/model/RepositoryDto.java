@@ -1,6 +1,5 @@
 package com.tomitribe.tribestream.registry.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tomitribe.wadl.api.Application;
 import com.tomitribe.wadl.api.Method;
 import com.tomitribe.wadl.api.Resource;
@@ -35,7 +34,6 @@ public class RepositoryDto extends AbstractEnrichDto {
         extractGroups();
     }
 
-    @JsonIgnore
     public Application getApplication() {
         return application;
     }
@@ -56,7 +54,7 @@ public class RepositoryDto extends AbstractEnrichDto {
         return description;
     }
 
-    public Map<String, GroupDto> getGroupDto() {
+    public Map<String, GroupDto> getGroups() {
         if (groupDto == null) {
             groupDto = new HashMap<String, GroupDto>();
         }
@@ -101,10 +99,10 @@ public class RepositoryDto extends AbstractEnrichDto {
 
                 for (String category : dto.categories.getCategory()) {
                     // group already created?
-                    GroupDto gp = getGroupDto().get(category);
+                    GroupDto gp = getGroups().get(category);
                     if (gp == null) {
                         gp = new GroupDto(category, application, resources);
-                        getGroupDto().put(category, gp);
+                        getGroups().put(category, gp);
                     }
                     gp.getServiceDtos().add(dto);
                     dto.setGroup(gp);
@@ -129,10 +127,6 @@ public class RepositoryDto extends AbstractEnrichDto {
         return nb;
     }
 
-    public static enum RepositoryType {
-        LOCAL, DEPLOYED
-    }
-
     // build
     public RepositoryDto withName(final String name) {
         this.name = name;
@@ -142,5 +136,9 @@ public class RepositoryDto extends AbstractEnrichDto {
     public RepositoryDto withDescription(final String description) {
         this.description = description;
         return this;
+    }
+
+    public static enum RepositoryType {
+        LOCAL, DEPLOYED
     }
 }
