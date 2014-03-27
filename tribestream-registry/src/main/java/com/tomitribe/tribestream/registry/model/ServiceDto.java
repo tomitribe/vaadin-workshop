@@ -1,6 +1,5 @@
 package com.tomitribe.tribestream.registry.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tomitribe.wadl.api.Method;
 import com.tomitribe.wadl.api.Param;
 import com.tomitribe.wadl.api.Resource;
@@ -28,7 +27,6 @@ public class ServiceDto extends AbstractEnrichDto {
         this.stackOfResource = stackOfResource;
     }
 
-    @JsonIgnore
     public Method getMethod() {
         return method;
     }
@@ -55,13 +53,12 @@ public class ServiceDto extends AbstractEnrichDto {
         return builder.toString();
     }
 
-    public void setGroup(final GroupDto group) {
-        this.group = group;
-    }
-
-    @JsonIgnore
     public GroupDto getGroup() {
         return group;
+    }
+
+    public void setGroup(final GroupDto group) {
+        this.group = group;
     }
 
     @Override
@@ -81,8 +78,8 @@ public class ServiceDto extends AbstractEnrichDto {
         int result = 45 * method.getName().hashCode();
 
         Iterator<Resource> iterator = stackOfResource.descendingIterator();
-        while(iterator.hasNext()) {
-            Resource next =  iterator.next();
+        while (iterator.hasNext()) {
+            Resource next = iterator.next();
             result = 17 * next.getPath().hashCode();
         }
         result = 17 * result + group.getName().hashCode();

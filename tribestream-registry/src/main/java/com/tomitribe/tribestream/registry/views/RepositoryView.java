@@ -9,12 +9,14 @@ import com.tomitribe.tribestream.registry.components.TVerticalLayout;
 import com.tomitribe.tribestream.registry.TribestreamTheme;
 import com.tomitribe.tribestream.registry.model.GroupDto;
 import com.tomitribe.tribestream.registry.model.RepositoryDto;
+import com.tomitribe.wadl.api.Resource;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
+import org.vaadin.jouni.animator.Disclosure;
 
 import java.util.Map;
 
@@ -57,8 +59,14 @@ public class RepositoryView extends TVerticalLayout implements View {
         });
         addComponent(new TVerticalLayout() {
             {
-                for (Map.Entry<String, GroupDto> entry : repo.getGroups().entrySet()) {
-                    addComponent(new TLabel(entry.getKey()));
+                for (final Map.Entry<String, GroupDto> entry : repo.getGroups().entrySet()) {
+                    addComponent(new Disclosure(entry.getKey(), new VerticalLayout() {
+                        {
+                            for (Resource resource : entry.getValue().getResources().getResource()) {
+                                addComponent(new TLabel(resource.getPath()));
+                            }
+                        }
+                    }));
                 }
             }
         });

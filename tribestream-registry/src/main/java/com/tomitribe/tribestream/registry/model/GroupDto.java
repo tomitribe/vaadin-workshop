@@ -1,6 +1,5 @@
 package com.tomitribe.tribestream.registry.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tomitribe.wadl.api.Application;
 import com.tomitribe.wadl.api.Resources;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -11,10 +10,9 @@ import java.util.List;
 
 public class GroupDto extends AbstractDto {
 
-    private String name;
     private final Application application;
     private final Resources resources;
-
+    private String name;
     private List<ServiceDto> serviceDtos;
 
     public GroupDto() {
@@ -34,12 +32,10 @@ public class GroupDto extends AbstractDto {
         return serviceDtos;
     }
 
-    @JsonIgnore
     public Application getApplication() {
         return application;
     }
 
-    @JsonIgnore
     public Resources getResources() {
         return resources;
     }
