@@ -84,9 +84,10 @@ $t-margin: 12px;
     @extend .v-table-striped;
   }
 
-  .v-panel {
+  .v-panel-content {
     @extend .borderless;
     @extend .v-panel-borderless;
+    @extend .v-panel-content-borderless;
   }
 
   input[type="button"],

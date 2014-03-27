@@ -33,8 +33,10 @@ public class ServiceDto extends AbstractEnrichDto {
 
     public String getPath() {
         final StringBuilder path = new StringBuilder();
-        for (Resource resource : stackOfResource) {
-            path.append(resource.getPath());
+        final Iterator<Resource> iterator = stackOfResource.descendingIterator();
+        while (iterator.hasNext()) {
+            Resource next = iterator.next();
+            path.append(next.getPath());
         }
         return path.toString();
     }
