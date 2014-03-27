@@ -23,10 +23,6 @@ $t-margin: 12px;
   @include chameleon;
 
   .t-breadcrumb {
-    @extend .link;
-    @extend .v-button-link;
-    @extend .v-nativebutton-link;
-
     &::after {
       @extend .v-label;
       content: " →";
@@ -88,6 +84,11 @@ $t-margin: 12px;
     @extend .v-table-striped;
   }
 
+  .v-panel {
+    @extend .borderless;
+    @extend .v-panel-borderless;
+  }
+
   input[type="button"],
   input[type="submit"],
   input[type="reset"],
@@ -95,6 +96,14 @@ $t-margin: 12px;
   button {
     background: transparent;
     border: none;
+  }
+
+  .v-link {
+    &,
+    a,
+    span {
+      vertical-align: initial;
+    }
   }
 
   &.v-app {
