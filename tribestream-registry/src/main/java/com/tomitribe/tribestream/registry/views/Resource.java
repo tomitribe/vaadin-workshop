@@ -2,8 +2,6 @@ package com.tomitribe.tribestream.registry.views;
 
 import com.tomitribe.tribestream.registry.model.ServiceDto;
 import com.vaadin.navigator.Navigator;
-import com.vaadin.server.ExternalResource;
-import com.vaadin.ui.Link;
 
 import java.util.Random;
 
@@ -16,6 +14,11 @@ public class Resource {
     private final ServiceDto dto;
     private final Navigator navigator;
 
+    //FIXME
+    private String path = "/" + new String[]{"foo", "bar", "baz"}[new Random().nextInt(3)];
+    private boolean secure = new Random().nextBoolean();
+    private String doc = new String[]{"Foo?", "Bar!", "Baz."}[new Random().nextInt(3)];
+
     public Resource(Navigator navigator, ServiceDto dto) {
         this.navigator = navigator;
         this.dto = dto;
@@ -23,23 +26,20 @@ public class Resource {
 
     public boolean isSecure() {
         //FIXME
-        return new Random().nextBoolean();
+        return secure;
     }
 
     public String getVerb() {
         return dto.getMethod().getName();
     }
 
-    public Link getPath() {
+    public String getPath() {
         //FIXME
-        String path = "/path-goes-here-" + new Random().nextInt();
-
-        String current = navigator.getUI().getPage().getLocation().getPath() + "#!" + navigator.getState();
-        return new Link(path, new ExternalResource(current + path));
+        return path;
     }
 
     public String getSummary() {
         //FIXME
-        return "First sentence of the documentation goes here.";
+        return doc;
     }
 }

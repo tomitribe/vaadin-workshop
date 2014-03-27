@@ -7,6 +7,8 @@ import com.tomitribe.tribestream.registry.model.ServiceDto;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.server.ExternalResource;
+import com.vaadin.ui.Link;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
 import org.vaadin.jouni.animator.Disclosure;
@@ -78,6 +80,17 @@ public class RepositoryView extends TVerticalLayout implements View {
                                             setHeight(Sizes.tableHeight(resources.size()));
 
                                             setContainerDataSource(new ResourceContainer(navigator, resources));
+                                            addGeneratedColumn("path", new ColumnGenerator() {
+                                                @Override
+                                                public Object generateCell(
+                                                        Table source, Object itemId, Object columnId) {
+                                                    Resource resource = (Resource) itemId;
+                                                    String path = resource.getPath();
+                                                    String current = navigator.getUI().getPage().getLocation().getPath()
+                                                            + "#!" + navigator.getState();
+                                                    return new Link(path, new ExternalResource(current + path));
+                                                }
+                                            });
                                             setVisibleColumns(Resource.PROPERTIES);
                                             setColumnExpandRatio(Resource.SUMMARY, 1);
                                         }
