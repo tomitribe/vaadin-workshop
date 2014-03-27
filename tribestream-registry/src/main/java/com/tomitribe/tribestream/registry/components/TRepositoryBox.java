@@ -1,7 +1,7 @@
-package com.tomitribe.components;
+package com.tomitribe.tribestream.registry.components;
 
-import com.tomitribe.Repository;
-import com.tomitribe.views.RepositoryView;
+import com.tomitribe.tribestream.registry.Repository;
+import com.tomitribe.tribestream.registry.views.RepositoryView;
 import com.vaadin.event.LayoutEvents;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.ui.CssLayout;

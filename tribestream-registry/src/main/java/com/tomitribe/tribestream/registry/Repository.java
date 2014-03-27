@@ -1,4 +1,4 @@
-package com.tomitribe;
+package com.tomitribe.tribestream.registry;
 
 import com.vaadin.server.Resource;
 

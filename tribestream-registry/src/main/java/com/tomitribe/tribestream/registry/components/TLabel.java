@@ -1,4 +1,4 @@
-package com.tomitribe.components;
+package com.tomitribe.tribestream.registry.components;
 
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Label;

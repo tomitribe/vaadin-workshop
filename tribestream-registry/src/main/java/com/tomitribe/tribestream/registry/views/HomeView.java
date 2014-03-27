@@ -1,8 +1,8 @@
-package com.tomitribe.views;
+package com.tomitribe.tribestream.registry.views;
 
 import com.porotype.iconfont.FontAwesome;
-import com.tomitribe.*;
-import com.tomitribe.components.*;
+import com.tomitribe.tribestream.registry.*;
+import com.tomitribe.tribestream.registry.components.*;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;

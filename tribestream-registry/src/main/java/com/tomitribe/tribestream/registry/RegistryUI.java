@@ -1,9 +1,9 @@
-package com.tomitribe;
+package com.tomitribe.tribestream.registry;
 
 import com.porotype.iconfont.FontAwesome;
-import com.tomitribe.components.TribestreamTheme;
-import com.tomitribe.views.HomeView;
-import com.tomitribe.views.RepositoryView;
+import com.tomitribe.tribestream.registry.components.TribestreamTheme;
+import com.tomitribe.tribestream.registry.views.HomeView;
+import com.tomitribe.tribestream.registry.views.RepositoryView;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.navigator.Navigator;
@@ -59,7 +59,7 @@ public class RegistryUI extends UI {
     }
 
     @WebServlet(value = "/*", asyncSupported = true)
-    @VaadinServletConfiguration(productionMode = false, ui = RegistryUI.class, widgetset = "com.tomitribe.AppWidgetSet")
+    @VaadinServletConfiguration(productionMode = false, ui = RegistryUI.class, widgetset = "com.tomitribe.tribestream.registry.AppWidgetSet")
     public static class Servlet extends VaadinServlet {
     }
 }

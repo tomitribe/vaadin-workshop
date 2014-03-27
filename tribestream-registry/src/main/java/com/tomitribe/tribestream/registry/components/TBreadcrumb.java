@@ -1,8 +1,6 @@
-package com.tomitribe.components;
+package com.tomitribe.tribestream.registry.components;
 
 import com.vaadin.navigator.Navigator;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Component;
 import com.vaadin.ui.NativeButton;
 
 public class TBreadcrumb extends NativeButton {

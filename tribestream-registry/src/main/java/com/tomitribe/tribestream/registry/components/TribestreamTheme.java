@@ -1,9 +1,7 @@
-package com.tomitribe.components;
+package com.tomitribe.tribestream.registry.components;
 
 import com.vaadin.server.ThemeResource;
-import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.themes.ChameleonTheme;
-import com.vaadin.ui.themes.Reindeer;
 
 public class TribestreamTheme {
     public static final String THEME_NAME = "tribestream";
@@ -28,7 +26,7 @@ public class TribestreamTheme {
     public static final String BREADCRUMB = "t-breadcrumb";
 
     public static class Icons {
-        public static final ThemeResource TOMITRIBE_MARK = new ThemeResource("tomitribe-mark_50x46.png");
+        public static final ThemeResource TOMITRIBE_MARK = new ThemeResource("registry-mark_50x46.png");
     }
 
     public static class Sizes {
