@@ -1,21 +1,32 @@
 package com.tomitribe.tribestream.registry.views;
 
 import com.porotype.iconfont.FontAwesome;
-import com.tomitribe.tribestream.registry.*;
-import com.tomitribe.tribestream.registry.components.*;
+import com.tomitribe.tribestream.registry.components.TBreadcrumbTrail;
+import com.tomitribe.tribestream.registry.components.TButton;
+import com.tomitribe.tribestream.registry.components.THorizontalLayout;
+import com.tomitribe.tribestream.registry.components.TLabel;
+import com.tomitribe.tribestream.registry.components.TRepositoryBox;
+import com.tomitribe.tribestream.registry.components.TSearchField;
+import com.tomitribe.tribestream.registry.components.TSpacer;
+import com.tomitribe.tribestream.registry.components.TVerticalLayout;
+import com.tomitribe.tribestream.registry.components.TribestreamTheme;
+import com.tomitribe.tribestream.registry.model.RepositoryDto;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.TextField;
 
+import java.util.List;
+
 public class HomeView extends TVerticalLayout implements View {
     private final Navigator navigator;
-    private final Repository[] repos;
+    private final List<RepositoryDto> repos;
 
-    public HomeView(final Navigator navigator, final Repository[] repos) {
+    public HomeView(final Navigator navigator, final List<RepositoryDto> repos) {
         this.navigator = navigator;
         this.repos = repos;
+
         addComponent(new TBreadcrumbTrail(navigator));
         addComponent(new THorizontalLayout() {
             {
@@ -44,7 +55,7 @@ public class HomeView extends TVerticalLayout implements View {
         addComponent(new CssLayout() {
             {
                 addStyleName(TribestreamTheme.REPOSITORY_GRID);
-                for (Repository repo : repos) {
+                for (RepositoryDto repo : repos) {
                     addComponent(new TRepositoryBox(navigator, repo));
                 }
             }
@@ -52,5 +63,6 @@ public class HomeView extends TVerticalLayout implements View {
     }
 
     @Override
-    public void enter(ViewChangeListener.ViewChangeEvent event) {}
+    public void enter(ViewChangeListener.ViewChangeEvent event) {
+    }
 }

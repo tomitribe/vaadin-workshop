@@ -22,11 +22,10 @@ public class TribestreamTheme {
     public static final String REPOSITORY_DESCRIPTION = "t-repository-description";
     public static final String REPOSITORY_SIZE = "t-repository-size";
 
-    public static final String BREADCRUMB_TRAIL = "t-breadcrumb-trail";
-    public static final String BREADCRUMB = "t-breadcrumb";
-
     public static class Icons {
-        public static final ThemeResource TOMITRIBE_MARK = new ThemeResource("registry-mark_50x46.png");
+        public static final ThemeResource TOMITRIBE_MARK = new ThemeResource("tomitribe-mark_50x46.png");
+        public static final String BREADCRUMB_TRAIL = "t-breadcrumb-trail";
+        public static final String BREADCRUMB = "t-breadcrumb";
     }
 
     public static class Sizes {
