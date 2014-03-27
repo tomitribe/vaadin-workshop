@@ -8,6 +8,7 @@ import com.tomitribe.tribestream.registry.model.generator.Names;
 import com.tomitribe.tribestream.registry.model.generator.Randoms;
 import com.tomitribe.tribestream.registry.views.HomeView;
 import com.tomitribe.tribestream.registry.views.RepositoryView;
+import com.tomitribe.tribestream.registry.views.ResourceView;
 import com.tomitribe.wadl.api.Application;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -33,6 +34,18 @@ public class RegistryUI extends UI {
     private List<RepositoryDto> repoList;
     private Map<String, RepositoryDto> repoMap;
 
+    public static String camelCase(final String string, final String delimiter) {
+        final StringBuilder sb = new StringBuilder();
+        final String[] strings = string.split(delimiter);
+
+        for (final String s : strings) {
+            final int l = sb.length();
+            sb.append(s);
+            sb.setCharAt(l, Character.toUpperCase(sb.charAt(l)));
+        }
+        return sb.toString();
+    }
+
     @Override
     protected void init(VaadinRequest request) {
         FontAwesome.load();
@@ -51,8 +64,18 @@ public class RegistryUI extends UI {
 
             @Override
             public View getView(String viewName) {
-                RepositoryDto repo = repoMap.get(
-                        viewName.contains("/") ? viewName.substring(0, viewName.indexOf('/')) : viewName);
+                RepositoryDto repo;
+                if (viewName.contains("/")) {
+                    int slash = viewName.indexOf('/');
+                    String repoName = viewName.substring(0, slash);
+                    repo = repoMap.get(repoName);
+                    String resourceName = viewName.substring(slash + 1);
+                    if (resourceName.length() != 0) {
+                        return new ResourceView(resourceName, navigator);
+                    }
+                } else {
+                    repo = repoMap.get(viewName);
+                }
                 return repo == null ? null : new RepositoryView(repo, navigator);
             }
         });
@@ -88,18 +111,6 @@ public class RegistryUI extends UI {
         } catch (JAXBException e) {
             return null;
         }
-    }
-
-    public static String camelCase(final String string, final String delimiter) {
-        final StringBuilder sb = new StringBuilder();
-        final String[] strings = string.split(delimiter);
-
-        for (final String s : strings) {
-            final int l = sb.length();
-            sb.append(s);
-            sb.setCharAt(l, Character.toUpperCase(sb.charAt(l)));
-        }
-        return sb.toString();
     }
 
     @WebServlet(value = "/*", asyncSupported = true)
