@@ -1,18 +1,11 @@
 package com.tomitribe.tribestream.registry.components;
 
-import com.vaadin.navigator.Navigator;
-import com.vaadin.ui.NativeButton;
+import com.vaadin.server.ExternalResource;
+import com.vaadin.ui.Link;
 
-public class TBreadcrumb extends NativeButton {
-    public TBreadcrumb(final Navigator navigator, final String view, String caption) {
-        super(caption);
+public class TBreadcrumb extends Link {
+    public TBreadcrumb(String caption, String path) {
+        super(caption, new ExternalResource(path));
         addStyleName(TribestreamTheme.Icons.BREADCRUMB);
-
-        addClickListener(new ClickListener() {
-            @Override
-            public void buttonClick(ClickEvent event) {
-                navigator.navigateTo(view);
-            }
-        });
     }
 }
