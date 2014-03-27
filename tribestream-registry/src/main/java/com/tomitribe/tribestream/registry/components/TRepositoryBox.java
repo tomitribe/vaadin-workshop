@@ -1,5 +1,6 @@
 package com.tomitribe.tribestream.registry.components;
 
+import com.tomitribe.tribestream.registry.TribestreamTheme;
 import com.tomitribe.tribestream.registry.model.RepositoryDto;
 import com.tomitribe.tribestream.registry.views.RepositoryView;
 import com.vaadin.event.LayoutEvents;
@@ -9,7 +10,10 @@ import com.vaadin.ui.CssLayout;
 public class TRepositoryBox extends TVerticalLayout {
     public TRepositoryBox(final Navigator navigator, final RepositoryDto repo) {
         addStyleName(TribestreamTheme.REPOSITORY_BOX);
-        setWidth(TribestreamTheme.Sizes.UNDEFINED);
+        setWidth("200px");
+        setHeight("200px");
+
+        TLabel description;
 
         addComponent(new CssLayout() {
             {
@@ -23,7 +27,7 @@ public class TRepositoryBox extends TVerticalLayout {
                 });
             }
         });
-        addComponent(new TLabel(repo.getDescription()) {
+        addComponent(description = new TLabel(repo.getDescription()) {
             {
                 addStyleName(TribestreamTheme.REPOSITORY_DESCRIPTION);
             }
@@ -33,6 +37,9 @@ public class TRepositoryBox extends TVerticalLayout {
                 addStyleName(TribestreamTheme.REPOSITORY_SIZE);
             }
         });
+
+        description.setSizeFull();
+        setExpandRatio(description, 1);
 
         addLayoutClickListener(new LayoutEvents.LayoutClickListener() {
             @Override

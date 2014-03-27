@@ -62,11 +62,20 @@ $t-margin: 12px;
   .t-repository-box {
     margin: $t-margin;
     background-color: $t-orange;
+    width: 200px;
+    height: 200px;
 
     &,
     * {
       color: $t-white;
       cursor: pointer;
+    }
+  }
+
+  .t-header {
+
+    &.v-margin-bottom {
+      padding-bottom: 0;
     }
   }
 

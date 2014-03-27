@@ -1,7 +1,6 @@
 package com.tomitribe.tribestream.registry;
 
 import com.porotype.iconfont.FontAwesome;
-import com.tomitribe.tribestream.registry.components.TribestreamTheme;
 import com.tomitribe.tribestream.registry.model.RepositoryDto;
 import com.tomitribe.tribestream.registry.model.generator.Descriptions;
 import com.tomitribe.tribestream.registry.model.generator.FluentIterable;

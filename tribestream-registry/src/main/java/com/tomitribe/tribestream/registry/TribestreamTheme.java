@@ -1,4 +1,4 @@
-package com.tomitribe.tribestream.registry.components;
+package com.tomitribe.tribestream.registry;
 
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.themes.ChameleonTheme;

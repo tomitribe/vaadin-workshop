@@ -1,5 +1,6 @@
 package com.tomitribe.tribestream.registry.components;
 
+import com.tomitribe.tribestream.registry.TribestreamTheme;
 import com.vaadin.navigator.Navigator;
 
 public class TBreadcrumbTrail extends THorizontalLayout {

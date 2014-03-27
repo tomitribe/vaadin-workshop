@@ -6,7 +6,7 @@ import com.tomitribe.tribestream.registry.components.TLabel;
 import com.tomitribe.tribestream.registry.components.TSearchField;
 import com.tomitribe.tribestream.registry.components.TSpacer;
 import com.tomitribe.tribestream.registry.components.TVerticalLayout;
-import com.tomitribe.tribestream.registry.components.TribestreamTheme;
+import com.tomitribe.tribestream.registry.TribestreamTheme;
 import com.tomitribe.tribestream.registry.model.RepositoryDto;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
