@@ -20,6 +20,12 @@ import java.util.List;
 
 public class HomeView extends TVerticalLayout implements View {
     public HomeView(final Navigator navigator, final List<RepositoryDto> repos) {
+    private final Navigator navigator;
+    private final Repository[] repos;
+
+        this.navigator = navigator;
+        this.repos = repos;
+        addComponent(new TBreadcrumbTrail(navigator));
         addComponent(new THorizontalLayout() {
             {
                 addStyleName(TribestreamTheme.HEADER);

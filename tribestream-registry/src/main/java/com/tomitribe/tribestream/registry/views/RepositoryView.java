@@ -14,6 +14,16 @@ import com.vaadin.ui.TextField;
 
 public class RepositoryView extends TVerticalLayout implements View {
     public RepositoryView(final RepositoryDto repo) {
+    private Navigator navigator;
+    private Repository repo;
+
+    public RepositoryView(final Repository repo, Navigator navigator) {
+        this.navigator = navigator;
+    }
+
+    @Override
+    public void enter(ViewChangeListener.ViewChangeEvent event) {
+        addComponent(new TBreadcrumbTrail(navigator));
         addComponent(new THorizontalLayout() {
             {
                 addStyleName(TribestreamTheme.HEADER);
