@@ -13,6 +13,7 @@ import com.vaadin.ui.TextField;
 
 import java.util.List;
 
+import static com.tomitribe.tribestream.registry.TribestreamTheme.StyleNames;
 import static com.tomitribe.tribestream.registry.TribestreamTheme.expand;
 
 public class HomeView extends TVerticalLayout implements View {
@@ -22,13 +23,14 @@ public class HomeView extends TVerticalLayout implements View {
     public HomeView(final Navigator navigator, final List<RepositoryDto> repos) {
         this.navigator = navigator;
         this.repos = repos;
+        addStyleName(StyleNames.VIEW);
 
         Panel content;
 
         addComponent(new TBreadcrumbTrail(navigator));
         addComponent(new THorizontalLayout() {
             {
-                addStyleName(TribestreamTheme.StyleNames.HEADER);
+                addStyleName(StyleNames.HEADER);
                 setWidth(TribestreamTheme.Sizes.FULL);
 
                 TextField search;
@@ -36,7 +38,7 @@ public class HomeView extends TVerticalLayout implements View {
                 addComponent(new THeading("Repositories"));
                 addComponent(new TButton(FontAwesome.Icon.cog) {
                     {
-                        addStyleName(TribestreamTheme.StyleNames.OPTIONS);
+                        addStyleName(StyleNames.OPTIONS);
                     }
                 });
                 addComponent(new TSpacer());
@@ -45,14 +47,21 @@ public class HomeView extends TVerticalLayout implements View {
                 expand(search, this);
             }
         });
-        addComponent(content = new Panel(new CssLayout() {
+        addComponent(content = new Panel() {
             {
-                addStyleName(TribestreamTheme.StyleNames.REPOSITORY_GRID);
-                for (RepositoryDto repo : repos) {
-                    addComponent(new TRepositoryBox(navigator, repo));
-                }
+                addStyleName(StyleNames.CONTENT);
+
+                setContent(new CssLayout() {
+                    {
+                        addStyleName(TribestreamTheme.StyleNames.REPOSITORY_GRID);
+
+                        for (RepositoryDto repo : repos) {
+                            addComponent(new TRepositoryBox(navigator, repo));
+                        }
+                    }
+                });
             }
-        }));
+        });
 
         expand(content, this);
         setSizeFull();

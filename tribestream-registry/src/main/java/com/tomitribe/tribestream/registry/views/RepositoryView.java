@@ -17,9 +17,7 @@ import org.vaadin.jouni.animator.Disclosure;
 import java.util.List;
 import java.util.Map;
 
-import static com.tomitribe.tribestream.registry.TribestreamTheme.Sizes;
-import static com.tomitribe.tribestream.registry.TribestreamTheme.StyleNames;
-import static com.tomitribe.tribestream.registry.TribestreamTheme.expand;
+import static com.tomitribe.tribestream.registry.TribestreamTheme.*;
 
 public class RepositoryView extends TVerticalLayout implements View {
     private Navigator navigator;
@@ -32,6 +30,8 @@ public class RepositoryView extends TVerticalLayout implements View {
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
+        addStyleName(StyleNames.VIEW);
+
         Panel content;
 
         addComponent(new TBreadcrumbTrail(navigator));
@@ -55,52 +55,58 @@ public class RepositoryView extends TVerticalLayout implements View {
                 setWidth(Sizes.FULL);
             }
         });
-        addComponent(content = new Panel(new TVerticalLayout() {
+        addComponent(content = new Panel() {
             {
-                for (final Map.Entry<String, GroupDto> entry : repo.getGroupDto().entrySet()) {
-                    addComponent(new Disclosure(entry.getKey()) {
-                        {
-                            setWidth(Sizes.FULL);
+                addStyleName(StyleNames.CONTENT);
 
-                            setContent(new TVerticalLayout() {
+                setContent(new TVerticalLayout() {
+                    {
+                        for (final Map.Entry<String, GroupDto> entry : repo.getGroupDto().entrySet()) {
+                            addComponent(new Disclosure(entry.getKey()) {
                                 {
                                     setWidth(Sizes.FULL);
 
-                                    final GroupDto group = entry.getValue();
-
-                                    //FIXME
-                                    addComponent(new TLabel("Group description goes here"));
-
-                                    addComponent(new Table() {
+                                    setContent(new TVerticalLayout() {
                                         {
-                                            List<ServiceDto> resources = group.getServiceDtos();
-
                                             setWidth(Sizes.FULL);
-                                            setHeight(Sizes.tableHeight(resources.size()));
 
-                                            setContainerDataSource(new ResourceContainer(navigator, resources));
-                                            addGeneratedColumn("path", new ColumnGenerator() {
-                                                @Override
-                                                public Object generateCell(
-                                                        Table source, Object itemId, Object columnId) {
-                                                    Resource resource = (Resource) itemId;
-                                                    String path = resource.getPath();
-                                                    String current = navigator.getUI().getPage().getLocation().getPath()
-                                                            + "#!" + navigator.getState();
-                                                    return new Link(path, new ExternalResource(current + path));
+                                            final GroupDto group = entry.getValue();
+
+                                            //FIXME
+                                            addComponent(new TLabel("Group description goes here"));
+
+                                            addComponent(new Table() {
+                                                {
+                                                    List<ServiceDto> resources = group.getServiceDtos();
+
+                                                    setWidth(Sizes.FULL);
+                                                    setHeight(Sizes.tableHeight(resources.size()));
+
+                                                    setContainerDataSource(new ResourceContainer(navigator, resources));
+                                                    addGeneratedColumn("path", new ColumnGenerator() {
+                                                        @Override
+                                                        public Object generateCell(
+                                                                Table source, Object itemId, Object columnId) {
+                                                            Resource resource = (Resource) itemId;
+                                                            String path = resource.getPath();
+                                                            String current = navigator.getUI().getPage().getLocation().getPath()
+                                                                    + "#!" + navigator.getState();
+                                                            return new Link(path, new ExternalResource(current + path));
+                                                        }
+                                                    });
+                                                    setVisibleColumns(Resource.PROPERTIES);
+                                                    setColumnExpandRatio(Resource.SUMMARY, 1);
                                                 }
                                             });
-                                            setVisibleColumns(Resource.PROPERTIES);
-                                            setColumnExpandRatio(Resource.SUMMARY, 1);
                                         }
                                     });
                                 }
                             });
                         }
-                    });
-                }
+                    }
+                });
             }
-        }));
+        });
 
         expand(content, this);
 
