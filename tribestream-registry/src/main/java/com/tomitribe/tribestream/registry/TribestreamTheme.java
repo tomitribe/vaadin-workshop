@@ -40,6 +40,7 @@ public class TribestreamTheme {
         public static final String H2 = ChameleonTheme.LABEL_H2;
 
         public static final String SEARCH = ChameleonTheme.TEXTFIELD_SEARCH;
+        public static final String SEARCH_FIELD = "t-search-field";
 
         public static final String HEADER = "t-header";
         public static final String SUB_HEADER = "t-sub-header";
@@ -64,7 +65,7 @@ public class TribestreamTheme {
         public static final String VIEW = "t-view";
         public static final String RESOURCE_VIEW = "t-resource-view";
 
-        public static final String OPTIONS = "t-options";
+        public static final String DROPDOWN = "t-dropdown";
         public static final String BYLINE = "t-byline";
         public static final String WRAPPER = "t-wrapper";
         public static final String REQUIRED = "t-required";
