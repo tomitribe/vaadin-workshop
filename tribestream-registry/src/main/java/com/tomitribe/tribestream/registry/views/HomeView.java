@@ -13,10 +13,12 @@ import com.tomitribe.tribestream.registry.components.TVerticalLayout;
 import com.tomitribe.tribestream.registry.model.RepositoryDto;
 import com.vaadin.event.FieldEvents;
 import com.vaadin.event.ShortcutAction;
+import com.vaadin.event.ShortcutListener;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.AbstractField;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextField;
@@ -32,9 +34,12 @@ import static com.tomitribe.tribestream.registry.TribestreamTheme.expand;
 public class HomeView extends TVerticalLayout implements View {
 
     private final Navigator navigator;
+    private CssLayout contentLayout;
+    private TextField search;
+
     private final List<RepositoryDto> repos;
     private List<RepositoryDto> filteredRepos;
-    private CssLayout contentLayout;
+
 
     public HomeView(final Navigator navigator, final List<RepositoryDto> repos) {
         this.navigator = navigator;
@@ -55,8 +60,6 @@ public class HomeView extends TVerticalLayout implements View {
                 addStyleName(StyleNames.HEADER);
                 setWidth(TribestreamTheme.Sizes.FULL);
 
-                TextField search;
-
                 addComponent(new THeading("Repositories"));
                 addComponent(new TButton(FontAwesome.Icon.cog) {
                     {
@@ -69,6 +72,14 @@ public class HomeView extends TVerticalLayout implements View {
                 expand(search, this);
                 search.addShortcutListener(new AbstractField.FocusShortcut(
                         search, ShortcutAction.KeyCode.S, ShortcutAction.ModifierKey.ALT));
+
+                search.addShortcutListener(new ShortcutListener(null, ShortcutAction.KeyCode.ESCAPE, null) {
+                    @Override
+                    public void handleAction(Object sender, Object target) {
+                        resetSearch();
+                    }
+                });
+
                 search.addTextChangeListener(new FieldEvents.TextChangeListener() {
                     @Override
                     public void textChange(FieldEvents.TextChangeEvent textChangeEvent) {
@@ -108,6 +119,11 @@ public class HomeView extends TVerticalLayout implements View {
 
         expand(content, this);
         setSizeFull();
+    }
+
+    private void resetSearch() {
+        search.setValue("");
+        refresh(contentLayout, repos);
     }
 
     private void refresh(final CssLayout layout, final List<RepositoryDto> list) {
