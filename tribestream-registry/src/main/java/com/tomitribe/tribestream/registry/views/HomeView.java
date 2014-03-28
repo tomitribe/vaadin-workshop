@@ -108,14 +108,14 @@ public class HomeView extends TVerticalLayout implements View {
                         });
 
                         // refresh
-                        refresh(contentLayout, filteredRepos);
+                        refresh(filteredRepos);
                     }
                 });
             }
         });
 
         addComponent(content = new Panel(contentLayout));
-        refresh(contentLayout, repos);
+        resetSearch();
 
         expand(content, this);
         setSizeFull();
@@ -123,13 +123,13 @@ public class HomeView extends TVerticalLayout implements View {
 
     private void resetSearch() {
         search.setValue("");
-        refresh(contentLayout, repos);
+        refresh(repos);
     }
 
-    private void refresh(final CssLayout layout, final List<RepositoryDto> list) {
-        layout.removeAllComponents();
+    private void refresh(final List<RepositoryDto> list) {
+        contentLayout.removeAllComponents();
         for (RepositoryDto repo : list) {
-            layout.addComponent(new TRepositoryBox(navigator, repo));
+            contentLayout.addComponent(new TRepositoryBox(navigator, repo));
         }
     }
 
