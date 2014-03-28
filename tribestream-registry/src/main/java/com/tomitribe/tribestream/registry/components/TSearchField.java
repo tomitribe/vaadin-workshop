@@ -8,6 +8,8 @@ import com.vaadin.ui.TextField;
 import static com.tomitribe.tribestream.registry.TribestreamTheme.StyleNames;
 
 public class TSearchField extends com.vaadin.ui.CustomComponent {
+    private TextField textField;
+
     public TSearchField(final String inputPrompt) {
         addStyleName(StyleNames.SEARCH_FIELD);
 
@@ -26,7 +28,7 @@ public class TSearchField extends com.vaadin.ui.CustomComponent {
 
                     }
                 });
-                addComponent(new TextField() {
+                addComponent(textField = new TextField() {
                     {
                         addStyleName(StyleNames.SEARCH);
                         setInputPrompt(inputPrompt);
@@ -35,5 +37,9 @@ public class TSearchField extends com.vaadin.ui.CustomComponent {
                 addComponent(new TButton(FontAwesome.Icon.remove));
             }
         });
+    }
+
+    public TextField getTextField() {
+        return textField;
     }
 }

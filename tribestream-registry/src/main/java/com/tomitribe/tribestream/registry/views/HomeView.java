@@ -36,7 +36,7 @@ public class HomeView extends TVerticalLayout implements View {
 
     private final Navigator navigator;
     private CssLayout contentLayout;
-    private TextField search;
+    private TSearchField search;
 
     private final List<RepositoryDto> repos;
     private List<RepositoryDto> filteredRepos;
@@ -61,8 +61,6 @@ public class HomeView extends TVerticalLayout implements View {
                 addStyleName(StyleNames.HEADER);
                 setWidth(TribestreamTheme.Sizes.FULL);
 
-                TSearchField search;
-
                 addComponent(new THeading("Repositories"));
                 addComponent(new MenuBar() {
                     {
@@ -79,17 +77,17 @@ public class HomeView extends TVerticalLayout implements View {
                 addComponent(search = new TSearchField("Search repositories…"));
 
                 expand(search, this);
-                search.addShortcutListener(new AbstractField.FocusShortcut(
-                        search, ShortcutAction.KeyCode.S, ShortcutAction.ModifierKey.ALT));
+                search.getTextField().addShortcutListener(new AbstractField.FocusShortcut(
+                        search.getTextField(), ShortcutAction.KeyCode.S, ShortcutAction.ModifierKey.ALT));
 
-                search.addShortcutListener(new ShortcutListener(null, ShortcutAction.KeyCode.ESCAPE, null) {
+                search.getTextField().addShortcutListener(new ShortcutListener(null, ShortcutAction.KeyCode.ESCAPE, null) {
                     @Override
                     public void handleAction(Object sender, Object target) {
                         resetSearch();
                     }
                 });
 
-                search.addTextChangeListener(new FieldEvents.TextChangeListener() {
+                search.getTextField().addTextChangeListener(new FieldEvents.TextChangeListener() {
                     @Override
                     public void textChange(FieldEvents.TextChangeEvent textChangeEvent) {
                         final String searchFor = textChangeEvent.getText();
@@ -123,8 +121,23 @@ public class HomeView extends TVerticalLayout implements View {
             }
         });
 
+        addComponent(content = new Panel(contentLayout));
+        refresh(contentLayout, repos);
+
         expand(content, this);
         setSizeFull();
+    }
+
+    private void resetSearch() {
+        search.getTextField().setValue("");
+        refresh(contentLayout, repos);
+    }
+
+    private void refresh(final CssLayout layout, final List<RepositoryDto> list) {
+        layout.removeAllComponents();
+        for (RepositoryDto repo : list) {
+            layout.addComponent(new TRepositoryBox(navigator, repo));
+        }
     }
 
     @Override
