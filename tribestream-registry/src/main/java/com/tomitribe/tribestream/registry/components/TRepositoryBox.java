@@ -7,6 +7,8 @@ import com.vaadin.event.LayoutEvents;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.ui.CssLayout;
 
+import static com.tomitribe.tribestream.registry.TribestreamTheme.expand;
+
 public class TRepositoryBox extends TVerticalLayout {
     public TRepositoryBox(final Navigator navigator, final RepositoryDto repo) {
         addStyleName(TribestreamTheme.StyleNames.REPOSITORY_BOX);
@@ -39,7 +41,7 @@ public class TRepositoryBox extends TVerticalLayout {
         });
 
         description.setSizeFull();
-        setExpandRatio(description, 1);
+        expand(description, this);
 
         addLayoutClickListener(new LayoutEvents.LayoutClickListener() {
             @Override

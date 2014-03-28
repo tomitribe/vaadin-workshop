@@ -1,14 +1,7 @@
 package com.tomitribe.tribestream.registry.views;
 
 import com.porotype.iconfont.FontAwesome;
-import com.tomitribe.tribestream.registry.components.TBreadcrumbTrail;
-import com.tomitribe.tribestream.registry.components.TButton;
-import com.tomitribe.tribestream.registry.components.THorizontalLayout;
-import com.tomitribe.tribestream.registry.components.TLabel;
-import com.tomitribe.tribestream.registry.components.TRepositoryBox;
-import com.tomitribe.tribestream.registry.components.TSearchField;
-import com.tomitribe.tribestream.registry.components.TSpacer;
-import com.tomitribe.tribestream.registry.components.TVerticalLayout;
+import com.tomitribe.tribestream.registry.components.*;
 import com.tomitribe.tribestream.registry.TribestreamTheme;
 import com.tomitribe.tribestream.registry.model.RepositoryDto;
 import com.vaadin.navigator.Navigator;
@@ -19,6 +12,8 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextField;
 
 import java.util.List;
+
+import static com.tomitribe.tribestream.registry.TribestreamTheme.expand;
 
 public class HomeView extends TVerticalLayout implements View {
     private final Navigator navigator;
@@ -38,11 +33,7 @@ public class HomeView extends TVerticalLayout implements View {
 
                 TextField search;
 
-                addComponent(new TLabel("Repositories") {
-                    {
-                        addStyleName(TribestreamTheme.StyleNames.H1);
-                    }
-                });
+                addComponent(new THeading("Repositories"));
                 addComponent(new TButton(FontAwesome.Icon.cog) {
                     {
                         addStyleName(TribestreamTheme.StyleNames.OPTIONS);
@@ -51,8 +42,7 @@ public class HomeView extends TVerticalLayout implements View {
                 addComponent(new TSpacer());
                 addComponent(search = new TSearchField("Search repositories…"));
 
-                search.setWidth(TribestreamTheme.Sizes.FULL);
-                setExpandRatio(search, 1);
+                expand(search, this);
             }
         });
         addComponent(content = new Panel(new CssLayout() {
@@ -64,9 +54,7 @@ public class HomeView extends TVerticalLayout implements View {
             }
         }));
 
-        content.setSizeFull();
-        setExpandRatio(content, 1);
-
+        expand(content, this);
         setSizeFull();
     }
 

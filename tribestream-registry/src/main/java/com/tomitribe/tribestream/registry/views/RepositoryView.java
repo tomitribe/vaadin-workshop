@@ -19,6 +19,7 @@ import java.util.Map;
 
 import static com.tomitribe.tribestream.registry.TribestreamTheme.Sizes;
 import static com.tomitribe.tribestream.registry.TribestreamTheme.StyleNames;
+import static com.tomitribe.tribestream.registry.TribestreamTheme.expand;
 
 public class RepositoryView extends TVerticalLayout implements View {
     private Navigator navigator;
@@ -41,16 +42,11 @@ public class RepositoryView extends TVerticalLayout implements View {
 
                 TextField search;
 
-                addComponent(new TLabel(repo.getName()) {
-                    {
-                        addStyleName(StyleNames.H1);
-                    }
-                });
+                addComponent(new THeading(repo.getName()));
                 addComponent(new TSpacer());
                 addComponent(search = new TSearchField("Search " + repo.getName() + "…"));
 
-                search.setWidth(Sizes.FULL);
-                setExpandRatio(search, 1);
+                expand(search, this);
             }
         });
         addComponent(new TLabel(repo.getDescription()) {
@@ -106,8 +102,7 @@ public class RepositoryView extends TVerticalLayout implements View {
             }
         }));
 
-        content.setSizeFull();
-        setExpandRatio(content, 1);
+        expand(content, this);
 
         setSizeFull();
     }
