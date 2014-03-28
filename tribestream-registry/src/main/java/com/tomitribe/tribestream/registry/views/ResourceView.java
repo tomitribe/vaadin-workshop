@@ -23,6 +23,7 @@ public class ResourceView extends TVerticalLayout implements View {
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
+        addStyleName(StyleNames.VIEW);
         addStyleName(StyleNames.RESOURCE_VIEW);
 
         THorizontalLayout body;

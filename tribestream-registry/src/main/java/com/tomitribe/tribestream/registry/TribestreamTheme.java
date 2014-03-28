@@ -58,12 +58,16 @@ public class TribestreamTheme {
         public static final String MAIN_COLUMN = "t-main-column";
         public static final String SIDE_COLUMN = "t-side-column";
 
-        public static final String OPTIONS = "t-options";
-        public static final String RESOURCE_VIEW = "t-resource-view";
         public static final String BODY = "t-body";
+        public static final String BODY_TEXT = "t-body-text";
+
+        public static final String VIEW = "t-view";
+        public static final String RESOURCE_VIEW = "t-resource-view";
+
+        public static final String OPTIONS = "t-options";
         public static final String BYLINE = "t-byline";
         public static final String WRAPPER = "t-wrapper";
         public static final String REQUIRED = "t-required";
-        public static final String BODY_TEXT = "t-body-text";
+        public static final String CONTENT = "t-content";
     }
 }
