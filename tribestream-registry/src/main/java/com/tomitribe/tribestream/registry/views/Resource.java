@@ -1,9 +1,6 @@
 package com.tomitribe.tribestream.registry.views;
 
 import com.tomitribe.tribestream.registry.model.ServiceDto;
-import com.vaadin.navigator.Navigator;
-
-import java.util.Random;
 
 public class Resource {
     public static final String SECURE = "secure";
@@ -12,21 +9,13 @@ public class Resource {
     public static final String SUMMARY = "summary";
     public static final String[] PROPERTIES = {SECURE, VERB, PATH, SUMMARY};
     private final ServiceDto dto;
-    private final Navigator navigator;
 
-    //FIXME
-    private String path = "/" + new String[]{"foo", "bar", "baz"}[new Random().nextInt(3)];
-    private boolean secure = new Random().nextBoolean();
-    private String doc = new String[]{"Foo?", "Bar!", "Baz."}[new Random().nextInt(3)];
-
-    public Resource(Navigator navigator, ServiceDto dto) {
-        this.navigator = navigator;
+    public Resource(ServiceDto dto) {
         this.dto = dto;
     }
 
     public boolean isSecure() {
-        //FIXME
-        return secure;
+        return dto.getRolesAllowed() != null;
     }
 
     public String getVerb() {

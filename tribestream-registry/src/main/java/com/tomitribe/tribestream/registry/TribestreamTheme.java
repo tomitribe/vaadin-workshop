@@ -70,5 +70,6 @@ public class TribestreamTheme {
         public static final String WRAPPER = "t-wrapper";
         public static final String REQUIRED = "t-required";
         public static final String CONTENT = "t-content";
+        public static final String TEXT_OVERFLOW = "t-text-overflow";
     }
 }

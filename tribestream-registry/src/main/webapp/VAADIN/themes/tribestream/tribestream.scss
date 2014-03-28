@@ -178,6 +178,10 @@ $t-margin2: 24px;
   .v-table {
     @extend .striped;
     @extend .v-table-striped;
+
+    .v-table-cell-content-overflow > .v-table-cell-wrapper {
+      text-overflow: ellipsis;
+    }
   }
 
   .v-panel {

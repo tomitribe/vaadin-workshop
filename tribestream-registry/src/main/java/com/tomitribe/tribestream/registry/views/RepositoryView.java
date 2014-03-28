@@ -1,5 +1,6 @@
 package com.tomitribe.tribestream.registry.views;
 
+import com.tomitribe.tribestream.registry.TribestreamTheme;
 import com.tomitribe.tribestream.registry.components.TBreadcrumbTrail;
 import com.tomitribe.tribestream.registry.components.THeading;
 import com.tomitribe.tribestream.registry.components.THorizontalLayout;
@@ -22,7 +23,6 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.Link;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.Table;
-import com.vaadin.ui.TextField;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Predicate;
 import org.vaadin.jouni.animator.Disclosure;
@@ -30,7 +30,6 @@ import org.vaadin.jouni.animator.Disclosure;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 import static com.tomitribe.tribestream.registry.TribestreamTheme.*;
 
@@ -160,11 +159,10 @@ public class RepositoryView extends TVerticalLayout implements View {
                                     setWidth(Sizes.FULL);
                                     setHeight(Sizes.tableHeight(resources.size()));
 
-                                    setContainerDataSource(new ResourceContainer(navigator, resources));
-                                    addGeneratedColumn("path", new ColumnGenerator() {
+                                    setContainerDataSource(new ResourceContainer(resources));
+                                    addGeneratedColumn(Resource.PATH, new ColumnGenerator() {
                                         @Override
-                                        public Object generateCell(
-                                                Table source, Object itemId, Object columnId) {
+                                        public Object generateCell(Table source, Object itemId, Object columnId) {
                                             Resource resource = (Resource) itemId;
                                             String path = resource.getPath();
                                             String current = navigator.getUI().getPage().getLocation().getPath()
@@ -174,6 +172,15 @@ public class RepositoryView extends TVerticalLayout implements View {
                                     });
                                     setVisibleColumns(Resource.PROPERTIES);
                                     setColumnExpandRatio(Resource.SUMMARY, 1);
+                                    setCellStyleGenerator(new CellStyleGenerator() {
+                                        @Override
+                                        public String getStyle(Table source, Object itemId, Object propertyId) {
+                                            if (Resource.SUMMARY.equals(propertyId)) {
+                                                return "overflow";
+                                            }
+                                            return null;
+                                        }
+                                    });
                                 }
                             });
                         }

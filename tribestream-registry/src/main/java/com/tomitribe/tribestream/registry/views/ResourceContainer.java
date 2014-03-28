@@ -12,10 +12,10 @@ import java.util.Collection;
 import java.util.List;
 
 public class ResourceContainer extends BeanItemContainer<Resource> {
-    public ResourceContainer(Navigator navigator, Collection<ServiceDto> dtos) {
+    public ResourceContainer(Collection<ServiceDto> dtos) {
         super(Resource.class);
         for (ServiceDto dto : dtos) {
-            addBean(new Resource(navigator, dto));
+            addBean(new Resource(dto));
         }
     }
 }
