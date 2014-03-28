@@ -34,7 +34,7 @@ public class TRepositoryBox extends TVerticalLayout {
                 addStyleName(TribestreamTheme.StyleNames.REPOSITORY_DESCRIPTION);
             }
         });
-        addComponent(new TLabel(repo.numberOfResources() + " resources") {
+        addComponent(new TLabel(repo.getNumberOfResources() + " resources") {
             {
                 addStyleName(TribestreamTheme.StyleNames.REPOSITORY_SIZE);
             }

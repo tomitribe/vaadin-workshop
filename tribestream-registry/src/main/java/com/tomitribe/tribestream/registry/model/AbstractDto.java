@@ -4,9 +4,10 @@ import com.tomitribe.wadl.api.Doc;
 import com.tomitribe.wadl.api.Method;
 import com.tomitribe.wadl.api.Param;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class AbstractDto {
+public class AbstractDto implements Serializable {
 
     public String getStringDoc(final Method method) {
         return getStringDoc(method.getDoc());

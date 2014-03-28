@@ -54,7 +54,7 @@ public class RepositoryDto extends AbstractEnrichDto {
         return description;
     }
 
-    public Map<String, GroupDto> getGroups() {
+    public Map<String, GroupDto> getGroupDto() {
         if (groupDto == null) {
             groupDto = new HashMap<String, GroupDto>();
         }
@@ -99,10 +99,10 @@ public class RepositoryDto extends AbstractEnrichDto {
 
                 for (String category : dto.categories.getCategory()) {
                     // group already created?
-                    GroupDto gp = getGroups().get(category);
+                    GroupDto gp = getGroupDto().get(category);
                     if (gp == null) {
                         gp = new GroupDto(category, application, resources);
-                        getGroups().put(category, gp);
+                        getGroupDto().put(category, gp);
                     }
                     gp.getServiceDtos().add(dto);
                     dto.setGroup(gp);
@@ -119,12 +119,16 @@ public class RepositoryDto extends AbstractEnrichDto {
                 .toString();
     }
 
-    public int numberOfResources() {
+    public int getNumberOfResources() {
         int nb = 0;
         for (GroupDto dto : groupDto.values()) {
             nb += dto.getServiceDtos().size();
         }
         return nb;
+    }
+
+    public static enum RepositoryType {
+        LOCAL, DEPLOYED
     }
 
     // build
@@ -136,9 +140,5 @@ public class RepositoryDto extends AbstractEnrichDto {
     public RepositoryDto withDescription(final String description) {
         this.description = description;
         return this;
-    }
-
-    public static enum RepositoryType {
-        LOCAL, DEPLOYED
     }
 }

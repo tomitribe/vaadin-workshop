@@ -34,12 +34,11 @@ public class Resource {
     }
 
     public String getPath() {
-        //FIXME
-        return path;
+        return dto.getPath();
     }
 
     public String getSummary() {
-        //FIXME
-        return doc;
+        return dto.getStringDoc(dto.getMethod());
     }
+
 }

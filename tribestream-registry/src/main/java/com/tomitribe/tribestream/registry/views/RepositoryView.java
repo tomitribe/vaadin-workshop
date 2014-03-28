@@ -57,7 +57,7 @@ public class RepositoryView extends TVerticalLayout implements View {
         });
         addComponent(content = new Panel(new TVerticalLayout() {
             {
-                for (final Map.Entry<String, GroupDto> entry : repo.getGroups().entrySet()) {
+                for (final Map.Entry<String, GroupDto> entry : repo.getGroupDto().entrySet()) {
                     addComponent(new Disclosure(entry.getKey()) {
                         {
                             setWidth(Sizes.FULL);

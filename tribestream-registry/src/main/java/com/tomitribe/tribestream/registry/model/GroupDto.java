@@ -10,11 +10,12 @@ import java.util.List;
 
 public class GroupDto extends AbstractDto {
 
+    private String name;
     private final Application application;
     private final Resources resources;
-    private String name;
-    private String description;
+
     private List<ServiceDto> serviceDtos;
+    private String description;
 
     public GroupDto() {
         this(null, null, null);
@@ -45,14 +46,6 @@ public class GroupDto extends AbstractDto {
         return name;
     }
 
-    public String getDescription() {
-        if (description == null || description.trim().length() == 0) {
-            // try do read doc tags
-            description = getStringDoc(resources.getDoc());
-        }
-        return description;
-    }
-
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
@@ -81,5 +74,13 @@ public class GroupDto extends AbstractDto {
         int result = name.hashCode();
         result = 31 * result + (application != null ? application.hashCode() : 0);
         return result;
+    }
+
+    public String getDescription() {
+        if (description == null || description.trim().length() == 0) {
+            // try do read doc tags
+            description = getStringDoc(resources.getDoc());
+        }
+        return description;
     }
 }
