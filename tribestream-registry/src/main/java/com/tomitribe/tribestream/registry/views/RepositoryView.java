@@ -35,7 +35,7 @@ import static com.tomitribe.tribestream.registry.TribestreamTheme.*;
 
 public class RepositoryView extends TVerticalLayout implements View {
     private Navigator navigator;
-    private TextField search;
+    private TSearchField search;
     private TVerticalLayout contentLayout = new TVerticalLayout();
 
     private RepositoryDto repo;
@@ -63,8 +63,8 @@ public class RepositoryView extends TVerticalLayout implements View {
                 addComponent(search = new TSearchField("Search " + repo.getName() + "…"));
 
                 expand(search, this);
-                search.addShortcutListener(new AbstractField.FocusShortcut(
-                        search, ShortcutAction.KeyCode.S, ShortcutAction.ModifierKey.ALT));
+                search.getTextField().addShortcutListener(new AbstractField.FocusShortcut(
+                        search.getTextField(), ShortcutAction.KeyCode.S, ShortcutAction.ModifierKey.ALT));
 
                 search.addShortcutListener(new ShortcutListener(null, ShortcutAction.KeyCode.ESCAPE, null) {
                     @Override
@@ -72,7 +72,7 @@ public class RepositoryView extends TVerticalLayout implements View {
                         resetSearch();
                     }
                 });
-                search.addTextChangeListener(new FieldEvents.TextChangeListener() {
+                search.getTextField().addTextChangeListener(new FieldEvents.TextChangeListener() {
                     @Override
                     public void textChange(FieldEvents.TextChangeEvent textChangeEvent) {
                         final String searchFor = textChangeEvent.getText();
@@ -126,7 +126,7 @@ public class RepositoryView extends TVerticalLayout implements View {
     }
 
     private void resetSearch() {
-        search.setValue("");
+        search.getTextField().setValue("");
         refresh(this.repo.getGroupDto().values());
     }
 
