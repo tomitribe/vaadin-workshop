@@ -136,8 +136,19 @@ $t-margin: 12px;
   }
 
   .v-panel {
-    @extend .borderless;
-    @extend .v-panel-borderless;
+    border: none;
+
+    .v-panel-nocaption {
+      border: none;
+    }
+
+    .v-panel-content {
+      border: none;
+    }
+
+    .v-panel-deco {
+      border: none;
+    }
   }
 
   &.v-app {

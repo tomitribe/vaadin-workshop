@@ -2,11 +2,13 @@ package com.tomitribe.tribestream.registry.views;
 
 import com.porotype.iconfont.FontAwesome;
 import com.tomitribe.tribestream.registry.components.*;
+import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.FormLayout;
+import com.vaadin.ui.Table;
 
 import static com.tomitribe.tribestream.registry.TribestreamTheme.*;
 
@@ -89,6 +91,11 @@ public class ResourceView extends TVerticalLayout implements View {
                                 });
 
                                 expand(spacer, this);
+                            }
+                        });
+                        addComponent(new Table() {
+                            {
+//                                new BeanItemContainer<Parameter>(Parameter.class, );
                             }
                         });
 
