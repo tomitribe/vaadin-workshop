@@ -62,14 +62,14 @@ public class RepositoryDto extends AbstractEnrichDto {
     }
 
     private void extractGroups() {
-        for (Resources resources : application.getResources()) {
+        for (final Resources resources : application.getResources()) {
             extractGroups(resources);
         }
     }
 
     private void extractGroups(final Resources resources) {
         final Deque<Resource> deque = new ArrayDeque<Resource>();
-        for (Resource resource : resources.getResource()) {
+        for (final Resource resource : resources.getResource()) {
             deque.push(resource);
             try {
                 extractServices(resources, deque);
@@ -82,7 +82,7 @@ public class RepositoryDto extends AbstractEnrichDto {
 
     private void extractServices(final Resources resources, final Deque<Resource> deque) {
         final Resource resource = deque.peek();
-        for (Serializable serializable : resource.getMethodOrResource()) {
+        for (final Serializable serializable : resource.getMethodOrResource()) {
             if (serializable instanceof Resource) {
                 final Resource s = (Resource) serializable;
                 deque.push(s);
@@ -97,7 +97,7 @@ public class RepositoryDto extends AbstractEnrichDto {
                 final Method m = (Method) serializable;
                 final ServiceDto dto = new ServiceDto(m, ((ArrayDeque) deque).clone());
 
-                for (String category : dto.categories.getCategory()) {
+                for (final String category : dto.categories.getCategory()) {
                     // group already created?
                     GroupDto gp = getGroupDto().get(category);
                     if (gp == null) {
@@ -121,7 +121,7 @@ public class RepositoryDto extends AbstractEnrichDto {
 
     public int getNumberOfResources() {
         int nb = 0;
-        for (GroupDto dto : groupDto.values()) {
+        for (final GroupDto dto : getGroupDto().values()) {
             nb += dto.getServiceDtos().size();
         }
         return nb;

@@ -46,13 +46,13 @@ public class ServiceDto extends AbstractEnrichDto {
         final ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
                 .append("methodId", method.getId());
 
-        for (Param param : method.getRequest().getParam()) {
+        for (final Param param : method.getRequest().getParam()) {
             builder.append(new ToStringBuilder(param, ToStringStyle.SHORT_PREFIX_STYLE)
                     .append(param.getName())
                     .append(param.getType()));
         }
 
-        for (Resource resource : stackOfResource) {
+        for (final Resource resource : stackOfResource) {
             builder.append(new ToStringBuilder(resource, ToStringStyle.SHORT_PREFIX_STYLE)
                     .append(resource.getId())
                     .append(resource.getPath()));
@@ -72,7 +72,7 @@ public class ServiceDto extends AbstractEnrichDto {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (!(o instanceof ServiceDto)) return false;
 
@@ -87,9 +87,9 @@ public class ServiceDto extends AbstractEnrichDto {
     public int hashCode() {
         int result = 45 * method.getName().hashCode();
 
-        Iterator<Resource> iterator = stackOfResource.descendingIterator();
+        final Iterator<Resource> iterator = stackOfResource.descendingIterator();
         while (iterator.hasNext()) {
-            Resource next = iterator.next();
+            final Resource next = iterator.next();
             result = 17 * next.getPath().hashCode();
         }
         result = 17 * result + group.getName().hashCode();

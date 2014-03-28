@@ -27,7 +27,7 @@ public class AbstractEnrichDto extends AbstractDto {
 
     }
 
-    public AbstractEnrichDto(List<Object> any) {
+    public AbstractEnrichDto(final List<Object> any) {
         categories = new Categories().withCategory("Default");
         extractFromAny(any);
     }
@@ -57,7 +57,7 @@ public class AbstractEnrichDto extends AbstractDto {
     }
 
     public void extractFromAny(final List<Object> any) {
-        for (Object o : any) {
+        for (final Object o : any) {
             if (o instanceof Categories) {
                 categories = (Categories) o;
 
