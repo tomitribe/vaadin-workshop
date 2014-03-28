@@ -17,6 +17,7 @@ import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.AbstractField;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.Panel;
@@ -114,6 +115,12 @@ public class HomeView extends TVerticalLayout implements View {
 
                         // refresh
                         refresh(filteredRepos);
+                    }
+                });
+                search.getReset().addClickListener(new Button.ClickListener() {
+                    @Override
+                    public void buttonClick(Button.ClickEvent clickEvent) {
+                        resetSearch();
                     }
                 });
             }

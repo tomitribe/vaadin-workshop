@@ -18,6 +18,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.AbstractField;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.Link;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.Table;
@@ -66,7 +67,8 @@ public class RepositoryView extends TVerticalLayout implements View {
                 search.getTextField().addShortcutListener(new AbstractField.FocusShortcut(
                         search.getTextField(), ShortcutAction.KeyCode.S, ShortcutAction.ModifierKey.ALT));
 
-                search.getTextField().addShortcutListener(new ShortcutListener(null, ShortcutAction.KeyCode.ESCAPE, null) {
+                search.getTextField().addShortcutListener(new ShortcutListener(null, ShortcutAction.KeyCode.ESCAPE,
+                        null) {
                     @Override
                     public void handleAction(Object sender, Object target) {
                         resetSearch();
@@ -101,6 +103,12 @@ public class RepositoryView extends TVerticalLayout implements View {
 
                         // refresh
                         refresh(filteredGroups);
+                    }
+                });
+                search.getReset().addClickListener(new Button.ClickListener() {
+                    @Override
+                    public void buttonClick(Button.ClickEvent clickEvent) {
+                        resetSearch();
                     }
                 });
             }
