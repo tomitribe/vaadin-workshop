@@ -19,6 +19,8 @@ $t-grey: rgb(147, 149, 152);
 $t-blue: rgb(97, 197, 191);
 $t-black: rgb(0, 0, 0);
 
+$t-light-grey: rgb(239, 239, 238);
+
 $t-margin: 12px;
 
 @mixin tribestream {
@@ -52,7 +54,7 @@ $t-margin: 12px;
     }
   }
 
-      .t-breadcrumb {
+  .t-breadcrumb {
     &::after {
       @extend .v-label;
       content: " →";
@@ -61,7 +63,6 @@ $t-margin: 12px;
   }
 
   .t-breadcrumb-trail {
-
     &.v-margin-top {
       padding-top: 0;
     }
@@ -77,6 +78,26 @@ $t-margin: 12px;
   .h2 {
     color: $t-orange;
     padding: 0;
+  }
+
+  h2,
+  .h2 {
+    padding-top: $t-margin;
+  }
+
+  .t-wrapper {
+    &.v-margin-top {
+      padding-top: $t-margin;
+    }
+
+    h2,
+    .h2 {
+      padding: 0;
+    }
+  }
+
+  .t-required {
+    color: $t-red;
   }
 
   .t-repository-title {
@@ -141,6 +162,6 @@ $t-margin: 12px;
   }
 
   .v-formlayout tr:nth-child(even) {
-//    background-color: $t-grey;
+    background-color: $t-light-grey;
   }
 }

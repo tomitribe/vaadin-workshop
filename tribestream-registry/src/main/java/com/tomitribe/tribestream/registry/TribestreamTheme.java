@@ -37,6 +37,8 @@ public class TribestreamTheme {
 
     public static class StyleNames {
         public static final String H1 = ChameleonTheme.LABEL_H1;
+        public static final String H2 = ChameleonTheme.LABEL_H2;
+
         public static final String SEARCH = ChameleonTheme.TEXTFIELD_SEARCH;
 
         public static final String HEADER = "t-header";

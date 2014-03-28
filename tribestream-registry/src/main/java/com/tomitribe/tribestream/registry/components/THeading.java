@@ -10,4 +10,9 @@ public class THeading extends TLabel {
         super(value);
         addStyleName(StyleNames.H1);
     }
+
+    public THeading(String value, String styleName) {
+        super(value);
+        addStyleName(StyleNames.H2);
+    }
 }

@@ -70,18 +70,25 @@ public class ResourceView extends TVerticalLayout implements View {
                                         + " \n"
                                         + "See Working with Timelines for instructions on traversing timelines."
                         ));
-                        addComponent(new THeading("Resource URL"));
+                        addComponent(new THeading("Resource URL", StyleNames.H2));
                         addComponent(new TLabel("https://api.twitter.com/1.1/statuses/mentions_timeline.json"));
                         addComponent(new THorizontalLayout() {
                             {
                                 addStyleName(StyleNames.WRAPPER);
+                                setDefaultComponentAlignment(Alignment.MIDDLE_LEFT);
+                                setWidth(Sizes.FULL);
 
-                                addComponent(new THeading("Parameters"));
+                                TSpacer spacer;
+
+                                addComponent(new THeading("Parameters", StyleNames.H2));
+                                addComponent(spacer = new TSpacer());
                                 addComponent(new TLabel("* Required") {
                                     {
                                         addStyleName(StyleNames.REQUIRED);
                                     }
                                 });
+
+                                expand(spacer, this);
                             }
                         });
 
