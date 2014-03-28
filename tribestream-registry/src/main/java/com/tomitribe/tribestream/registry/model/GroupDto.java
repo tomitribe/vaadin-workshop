@@ -56,11 +56,11 @@ public class GroupDto extends AbstractDto {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (!(o instanceof GroupDto)) return false;
 
-        GroupDto groupDto = (GroupDto) o;
+        final GroupDto groupDto = (GroupDto) o;
 
         if (application != null ? !application.equals(groupDto.application) : groupDto.application != null)
             return false;
