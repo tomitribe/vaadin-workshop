@@ -126,7 +126,11 @@ public class HomeView extends TVerticalLayout implements View {
             }
         });
 
-        addComponent(content = new Panel(contentLayout));
+        addComponent(content = new Panel(contentLayout) {
+            {
+                addStyleName(StyleNames.CONTENT);
+            }
+        });
         resetSearch();
 
         expand(content, this);

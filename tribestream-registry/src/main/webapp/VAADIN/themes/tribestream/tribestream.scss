@@ -28,6 +28,11 @@ $t-margin2: 24px;
   @include chameleon;
   @include defaults;
 
+  .v-table-header-wrap,
+  .v-table-header-drag {
+    line-height: 1;
+  }
+
   .t-view,
   .t-body,
   .t-main-column,

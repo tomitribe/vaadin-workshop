@@ -151,7 +151,8 @@
   .v-tabsheet-scroller,
   .v-csslayout-toolbar,
   .v-menubar {
-    background-color: $t-orange;
+    background: $t-orange;
+    color: $t-white;
     border-color: transparent;
   }
 
@@ -209,7 +210,7 @@
   .v-accordion-item-caption,
   .v-menubar .v-menubar-menuitem,
   .v-filterselect-select-button .v-filterselect-input {
-    text-shadow: 0 1px 0 rgb(235, 235, 232);
+    text-shadow: none;
   }
 
   .v-window,

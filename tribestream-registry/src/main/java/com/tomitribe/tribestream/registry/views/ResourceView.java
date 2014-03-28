@@ -1,11 +1,13 @@
 package com.tomitribe.tribestream.registry.views;
 
 import com.porotype.iconfont.FontAwesome;
+import com.tomitribe.tribestream.registry.TribestreamTheme;
 import com.tomitribe.tribestream.registry.components.*;
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.Table;
@@ -96,7 +98,36 @@ public class ResourceView extends TVerticalLayout implements View {
                         });
                         addComponent(new Table() {
                             {
-//                                new BeanItemContainer<Parameter>(Parameter.class, );
+                                BeanItemContainer<Parameter> container;
+
+                                //FIXME
+                                setContainerDataSource(
+                                        container = new BeanItemContainer<Parameter>(Parameter.class) {
+                                            {
+                                                addBean(new Parameter("id", "int", "The tweet ID to look for."));
+                                                addBean(new Parameter("name", "string",
+                                                        "Looks like it's the name or so." +
+                                                                "<p><b>Example values:</b> 1234</p>"
+                                                ));
+                                                addBean(new Parameter("foobar", "date",
+                                                        "Here is something else probably."));
+                                            }
+                                        }
+                                );
+                                addGeneratedColumn("description", new ColumnGenerator() {
+                                    @Override
+                                    public Object generateCell(Table source, Object itemId, Object columnId) {
+                                        return new TLabel(((Parameter)itemId).getDescription()) {
+                                            {
+                                                setContentMode(ContentMode.HTML);
+                                            }
+                                        };
+                                    }
+                                });
+
+                                setVisibleColumns("name", "type", "description");
+                                setColumnExpandRatio("description", 1);
+                                setWidth(Sizes.FULL);
                             }
                         });
 
