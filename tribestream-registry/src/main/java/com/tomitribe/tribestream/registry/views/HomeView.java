@@ -1,12 +1,18 @@
 package com.tomitribe.tribestream.registry.views;
 
 import com.porotype.iconfont.FontAwesome;
-import com.tomitribe.tribestream.registry.components.*;
 import com.tomitribe.tribestream.registry.TribestreamTheme;
+import com.tomitribe.tribestream.registry.components.TBreadcrumbTrail;
+import com.tomitribe.tribestream.registry.components.TButton;
+import com.tomitribe.tribestream.registry.components.THeading;
+import com.tomitribe.tribestream.registry.components.THorizontalLayout;
+import com.tomitribe.tribestream.registry.components.TRepositoryBox;
+import com.tomitribe.tribestream.registry.components.TSearchField;
+import com.tomitribe.tribestream.registry.components.TSpacer;
+import com.tomitribe.tribestream.registry.components.TVerticalLayout;
 import com.tomitribe.tribestream.registry.model.RepositoryDto;
 import com.vaadin.event.FieldEvents;
 import com.vaadin.event.ShortcutAction;
-import com.vaadin.event.ShortcutListener;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
@@ -20,6 +26,7 @@ import org.apache.commons.collections4.Predicate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.tomitribe.tribestream.registry.TribestreamTheme.StyleNames;
 import static com.tomitribe.tribestream.registry.TribestreamTheme.expand;
 
 public class HomeView extends TVerticalLayout implements View {
@@ -32,6 +39,7 @@ public class HomeView extends TVerticalLayout implements View {
     public HomeView(final Navigator navigator, final List<RepositoryDto> repos) {
         this.navigator = navigator;
         this.repos = repos;
+        addStyleName(StyleNames.VIEW);
 
         final Panel content;
 
@@ -44,7 +52,7 @@ public class HomeView extends TVerticalLayout implements View {
         addComponent(new TBreadcrumbTrail(navigator));
         addComponent(new THorizontalLayout() {
             {
-                addStyleName(TribestreamTheme.StyleNames.HEADER);
+                addStyleName(StyleNames.HEADER);
                 setWidth(TribestreamTheme.Sizes.FULL);
 
                 TextField search;
@@ -52,7 +60,7 @@ public class HomeView extends TVerticalLayout implements View {
                 addComponent(new THeading("Repositories"));
                 addComponent(new TButton(FontAwesome.Icon.cog) {
                     {
-                        addStyleName(TribestreamTheme.StyleNames.OPTIONS);
+                        addStyleName(StyleNames.OPTIONS);
                     }
                 });
                 addComponent(new TSpacer());
