@@ -197,14 +197,60 @@ $t-margin2: 24px;
   }
 
   &.v-app {
-    button {
+    button,
+    .v-menubar {
       background: $t-orange;
       color: $t-white;
       border: none;
+      cursor: pointer;
 
-      &.t-options {
+      &.t-dropdown {
         background: transparent;
         color: $t-black;
+        padding: 0;
+
+      }
+
+      &:focus {
+        outline: none;
+        background: $t-blue;
+        color: white;
+      }
+    }
+  }
+
+  .t-search-field {
+    > .v-csslayout {
+      position: relative;
+
+      > .t-dropdown {
+        position: absolute;
+        top: 1px;
+        left: 0;
+
+        > .v-menubar-menuitem {
+          padding-left: 16px;
+        }
+      }
+
+      > input.v-textfield-search[type=text],
+      > .v-filterselect-search {
+        padding-left: $t-margin2 + 4px;
+        width: 100%;
+
+        + button {
+          position: absolute;
+          top: -1px;
+          right: 0;
+          background: transparent;
+          color: $t-black;
+
+          &:focus {
+            outline: none;
+            background: $t-blue;
+            color: white;
+          }
+        }
       }
     }
   }

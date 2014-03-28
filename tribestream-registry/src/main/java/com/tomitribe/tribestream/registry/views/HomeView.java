@@ -8,8 +8,8 @@ import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.CssLayout;
+import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.Panel;
-import com.vaadin.ui.TextField;
 
 import java.util.List;
 
@@ -33,12 +33,18 @@ public class HomeView extends TVerticalLayout implements View {
                 addStyleName(StyleNames.HEADER);
                 setWidth(TribestreamTheme.Sizes.FULL);
 
-                TextField search;
+                TSearchField search;
 
                 addComponent(new THeading("Repositories"));
-                addComponent(new TButton(FontAwesome.Icon.cog) {
+                addComponent(new MenuBar() {
                     {
-                        addStyleName(StyleNames.OPTIONS);
+                        addStyleName(StyleNames.DROPDOWN);
+                        setHtmlContentAllowed(true);
+
+                        //FIXME: add real menu options
+                        MenuItem menuItem = addItem("" + FontAwesome.Icon.cog, null);
+                        menuItem.addItem("Lorem", null);
+                        menuItem.addItem("Ipsum", null);
                     }
                 });
                 addComponent(new TSpacer());
