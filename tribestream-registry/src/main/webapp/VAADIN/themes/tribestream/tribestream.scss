@@ -28,11 +28,6 @@ $t-margin2: 24px;
   @include chameleon;
   @include defaults;
 
-  .v-table-header-wrap,
-  .v-table-header-drag {
-    line-height: 1;
-  }
-
   .t-view,
   .t-body,
   .t-main-column,
@@ -183,6 +178,11 @@ $t-margin2: 24px;
   .v-table {
     @extend .striped;
     @extend .v-table-striped;
+
+    .v-table-header-wrap,
+    .v-table-header-drag {
+      line-height: 1;
+    }
 
     .v-table-cell-content-overflow > .v-table-cell-wrapper {
       text-overflow: ellipsis;
