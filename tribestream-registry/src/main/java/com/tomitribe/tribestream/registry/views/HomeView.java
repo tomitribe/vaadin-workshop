@@ -36,6 +36,7 @@ public class HomeView extends TVerticalLayout implements View {
     private final Navigator navigator;
     private CssLayout contentLayout;
     private TextField search;
+    private TSearchField search;
 
     private final List<RepositoryDto> repos;
     private List<RepositoryDto> filteredRepos;
@@ -62,8 +63,16 @@ public class HomeView extends TVerticalLayout implements View {
 
                 addComponent(new THeading("Repositories"));
                 addComponent(new TButton(FontAwesome.Icon.cog) {
+                addComponent(new MenuBar() {
                     {
                         addStyleName(StyleNames.OPTIONS);
+                        addStyleName(StyleNames.DROPDOWN);
+                        setHtmlContentAllowed(true);
+
+                        //FIXME: add real menu options
+                        MenuItem menuItem = addItem("" + FontAwesome.Icon.cog, null);
+                        menuItem.addItem("Lorem", null);
+                        menuItem.addItem("Ipsum", null);
                     }
                 });
                 addComponent(new TSpacer());
@@ -72,8 +81,11 @@ public class HomeView extends TVerticalLayout implements View {
                 expand(search, this);
                 search.addShortcutListener(new AbstractField.FocusShortcut(
                         search, ShortcutAction.KeyCode.S, ShortcutAction.ModifierKey.ALT));
+                search.getTextField().addShortcutListener(new AbstractField.FocusShortcut(
+                        search.getTextField(), ShortcutAction.KeyCode.S, ShortcutAction.ModifierKey.ALT));
 
                 search.addShortcutListener(new ShortcutListener(null, ShortcutAction.KeyCode.ESCAPE, null) {
+                search.getTextField().addShortcutListener(new ShortcutListener(null, ShortcutAction.KeyCode.ESCAPE, null) {
                     @Override
                     public void handleAction(Object sender, Object target) {
                         resetSearch();
@@ -81,6 +93,7 @@ public class HomeView extends TVerticalLayout implements View {
                 });
 
                 search.addTextChangeListener(new FieldEvents.TextChangeListener() {
+                search.getTextField().addTextChangeListener(new FieldEvents.TextChangeListener() {
                     @Override
                     public void textChange(FieldEvents.TextChangeEvent textChangeEvent) {
                         final String searchFor = textChangeEvent.getText();
@@ -124,6 +137,8 @@ public class HomeView extends TVerticalLayout implements View {
     private void resetSearch() {
         search.setValue("");
         refresh(repos);
+        search.getTextField().setValue("");
+        refresh(contentLayout, repos);
     }
 
     private void refresh(final List<RepositoryDto> list) {
