@@ -3,7 +3,6 @@ package com.tomitribe.tribestream.registry.views;
 import com.porotype.iconfont.FontAwesome;
 import com.tomitribe.tribestream.registry.TribestreamTheme;
 import com.tomitribe.tribestream.registry.components.TBreadcrumbTrail;
-import com.tomitribe.tribestream.registry.components.TButton;
 import com.tomitribe.tribestream.registry.components.THeading;
 import com.tomitribe.tribestream.registry.components.THorizontalLayout;
 import com.tomitribe.tribestream.registry.components.TRepositoryBox;
@@ -18,11 +17,9 @@ import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.AbstractField;
-import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.Panel;
-import com.vaadin.ui.TextField;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Predicate;
 
@@ -80,7 +77,8 @@ public class HomeView extends TVerticalLayout implements View {
                 search.getTextField().addShortcutListener(new AbstractField.FocusShortcut(
                         search.getTextField(), ShortcutAction.KeyCode.S, ShortcutAction.ModifierKey.ALT));
 
-                search.getTextField().addShortcutListener(new ShortcutListener(null, ShortcutAction.KeyCode.ESCAPE, null) {
+                search.getTextField().addShortcutListener(new ShortcutListener(null, ShortcutAction.KeyCode.ESCAPE,
+                        null) {
                     @Override
                     public void handleAction(Object sender, Object target) {
                         resetSearch();
@@ -115,14 +113,14 @@ public class HomeView extends TVerticalLayout implements View {
                         });
 
                         // refresh
-                        refresh(contentLayout, filteredRepos);
+                        refresh(filteredRepos);
                     }
                 });
             }
         });
 
         addComponent(content = new Panel(contentLayout));
-        refresh(contentLayout, repos);
+        resetSearch();
 
         expand(content, this);
         setSizeFull();
@@ -130,13 +128,13 @@ public class HomeView extends TVerticalLayout implements View {
 
     private void resetSearch() {
         search.getTextField().setValue("");
-        refresh(contentLayout, repos);
+        refresh(repos);
     }
 
-    private void refresh(final CssLayout layout, final List<RepositoryDto> list) {
-        layout.removeAllComponents();
+    private void refresh(final List<RepositoryDto> list) {
+        contentLayout.removeAllComponents();
         for (RepositoryDto repo : list) {
-            layout.addComponent(new TRepositoryBox(navigator, repo));
+            contentLayout.addComponent(new TRepositoryBox(navigator, repo));
         }
     }
 
